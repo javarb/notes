@@ -1,6 +1,6 @@
 # notes
 
-## first session
+## First Session
 
 - Introduction to the Java boilerplate
 - Basic use of classes and objects and datatypes 
@@ -9,7 +9,7 @@
 - Git & GitHub basics 
 - Use Markdown notes
 
-###Suggested lectures:
+### Suggested lectures:
 
 * https://en.wikipedia.org/wiki/Law_of_Demeter
 * https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
