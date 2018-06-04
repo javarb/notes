@@ -1,6 +1,6 @@
 # notes
 
-## First Session
+## Session 01/06/2018
 
 - Introduction to the Java boilerplate
 - Basic use of classes and objects and datatypes 
@@ -14,7 +14,7 @@
 * https://en.wikipedia.org/wiki/Law_of_Demeter
 * https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
-## Second Session
+## Session 04/06/2018
 - Fork databasic project from github.com/kinbiko repo and clone locally
 - Write the databasic requirements
 - Write databasic design
