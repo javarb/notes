@@ -31,7 +31,7 @@ Insert and Query
 so non 'reset' or 'revert' will work. This means thereis loose data risk.
 
 ### Suggested lectures:
-* Datetime (2002-10-02T15:00:00Z): RFC-3999
+* RFC-3999 - Datetime (2002-10-02T15:00:00Z)
 * http://agilemanifesto.org/
 * https://en.wikipedia.org/wiki/Law_of_Demeter
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm (for the interview problems)
