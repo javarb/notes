@@ -1,4 +1,4 @@
-# notes
+# SOFTWARE ENGINEERING CLASSES NOTES
 
 ## Session 01/06/2018
 
@@ -40,7 +40,7 @@ git push -f
 ```
 Where `<commit_text>` is the commit to be corrected and `<exp>` is a file or a regular expression to match.
 
-**Be carefully** because this overwrite the previous commit. So non `git reset` or `git revert` will work. This means thereis a loose data risk.
+**Be carefully** because this overwrite the previous commit. So non `git reset` or `git revert` will work. This means there is a loose data risk.
 
 ### Suggested lectures:
 * [RFC-3999](https://www.ietf.org/rfc/rfc3339.txt) (Datetime standard)
