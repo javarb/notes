@@ -50,3 +50,7 @@ Where `<commit_text>` is the commit to be corrected and `<exp>` is a file or a r
 
 ### Homework
 - Design query and write design code in Java (input and query).
+
+- When I was opening the project `databasic` I created from home this not have the src dir, so I made a new project in this folder, maybe I din't well the git commit at home. 
+
+- I installed the Markdown plugin in IntelliJ IDEA 
