@@ -1,5 +1,5 @@
 # SOFTWARE ENGINEERING JAVA CLASSES
 
-This is the history of my notes and work, during the sessions about Software Engineering using Java Programming Language.
+This is the history of my work notes during the sessions about Software Engineering using Java Programming Language.
 
-The notes can be saw under this easy to understand structure `sessions/year/month/Session_#.md`
+The notes are been stored under the following structure `sessions/year/month/Session_#.md`
