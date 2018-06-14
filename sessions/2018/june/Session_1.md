@@ -3,10 +3,10 @@
 ## Session 1 (01/06/2018)
 
 - Introduction to the Java boilerplate
-- Basic use of classes and objects and datatypes 
-- Highlight the importance of test our code 
-- Enum method example 
-- Git & GitHub basics 
+- Basic use of classes and objects and datatypes
+- Highlight the importance of test our code
+- Enum method example
+- Git & GitHub basics
 - Use Markdown notes
 
 ### Suggested lectures:

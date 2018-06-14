@@ -6,7 +6,7 @@
 	- Fixing indentation.
 	- Inverting if statements.
 	- Returning inside if statements.
-	- Mantain methods shorter possible.	
+	- Keep methods short if possible.
 - Used `ArrayList` to keep the contents of the opened file.
 - Manual importing of libraries (jars files).
 - Created `file.json` in databasic to test `insert command`
@@ -14,19 +14,19 @@
 ### Notes:
 
 #### Making code cleaner and shorter
-Roger created a branch called Javier in his GitHub, there he made a pull request addressing to me several precisions in regards to clean code and good practices. In this session we were reviewing some of the Roger's comments on that github's pull request and other subjects arised while we were reviewing my code:
+Roger created a branch called `javier` in his GitHub, there he made a pull request (aka. PR) addressing to me several precisions in regards to clean code and good practices. In this session we were reviewing some of the Roger's comments on that github's pull request and other subjects that arose while we were reviewing my code:
 
 ##### Fixing indentation
 
-In Java generally indentation is of 4 spaces or 1 tab. 
+In Java generally indentation is of 4 spaces or 1 tab.
 
-In order to fix it, and always be need, use `Alt+Shift+L` or right mouse click over the file (in the left files list of project) and click on `reformat code`. In general is a good practice to do it frecuently.
+In order to fix it, and always be need, use `Alt+Shift+L` or right mouse click over the file (in the left files list of project) and click on `reformat code`. In general is a good practice to do it frequently.
 
 ##### Inverting if statements
 
 The use of nested `if-else` statements produce indentation in our code and makes it harder to follow. In order to solve this we can `invert` our if-else statements hitting `Alt+Enter` over the `if` word and pressing `Enter` or `Click` over `Invert the 'if' condition`
 
-This inverting utility also denies the `if` statement if it's truly or makes it truly if it's falsy. 
+This inverting utility also negates the `if` statement if it's true or makes it true if it's false.
 
 Example:
 
@@ -48,27 +48,26 @@ Results in:
 ```
 And vice versa
 
-##### Returning inside if statements 
+##### Returning inside if statements
 
-In the `validateInput` method of `InputProcessor` Class, we used `return` statements inside the `if` statements (or other methods called from there) in order to avoid use of nested `else if` conditions and make code shorter and nicer to read.
+In the `validateInput` method of `InputProcessor` Class, we used `return` statements inside the `if` statements (or other methods called from there) in order to avoid use of nested `else if` conditions and make code shorter and nicer to read. This is a nice trick to use because we write short methods. If we used this technique on longer methods it could lead to confusing code. Many (3+) possible returns in a single method is bad.
 
-Finally, that method finished with two if statements for evaluate if `args[0]` corresponds to:
-- `help` command 
-- `insert` command. 
+Finally, that method finished with two if statements to evaluate if `args[0]` corresponds to:
+- `help` command
+- `insert` command.
 
 In this way, the `query` command option stands as default outside of any `if` and, implicitly, of their `return` instructions. So `query` command is executed when no arguments are provided:
 ```java
         // Check commands
-        if (args[0].equals(DataBasicCommands.HELP.toString())) {  
+        if (args[0].equals(DataBasicCommands.HELP.toString())) {
             help();
             return;
 
         }
-        
+
         if (args[0].equals(DataBasicCommands.INSERT.toString())) {
             validateInsert(args);
-            return;            
-
+            return;
         }
 
         // Default, make a query
@@ -77,13 +76,13 @@ In this way, the `query` command option stands as default outside of any `if` an
         return;
 ```
 
-##### Mantain methods shorter possible
+##### Keep methods short when possible
 
 Is a general rule and good practice to keep short methods length. An estimative of 10-20 lines of code could work, but a good code recommendation from Roger is to maintain 6 lines of code maximum per method.
 
-In order to make methods shorter, we can delegate part of our code to new methods. This can be done in IntelliJ IDEA with `Ctrl+Alt+M` or selecting desired text, right mouse click over it and click in `Refactor/Extract/Method` option. After choose `method name` and `parameters`.
+In order to make methods shorter, we can delegate part of our code to new methods. This can be done in IntelliJ IDEA with `Ctrl+Alt+m` or selecting desired text, right mouse click over it and click in `Refactor/Extract/Method` option. After choose `method name` and `parameters`.
 
-For `Main` method, the recommended length is just 1 line. So this: 
+For `Main` method, the recommended length is just 1 line. So this:
 ```java
 InputProcessor inputProcessor = new InputProcessor();
 inputProcessor.validateInput(args);
@@ -116,7 +115,7 @@ For [Reading files] I was using a `Stream`. After read each line with stream, th
 
 `ArrayList` is an implementation of `List`, however the type of the `lines` variable and also the `getLines` method (and returned value) is `List` not `ArrayList`. This is specially important, since this allows us to implement different kind of lists -if desired- and not have to change all the code in our application (methods, varibles, etc.) for this reason.
 
-For other side, when we declare the variable of type `List` it's not neccesary to write the datatype in the implemented list `ArrayList`. So we can write:
+For other side, when we declare the type to be held inside our `List` in the variable's type declaration, it's not necessary to write the datatype in the `<angle brackets>` of the implemented list `ArrayList`. So we can write:
 ```jav
         List<String> lines = new ArrayList<>();
 ```
@@ -144,6 +143,6 @@ Instead of:
 ### TODO
 
 - ~~To apply all the comments and suggestions in Guthub pull's resquest before merge with Javier branch in Roger's Github~~
-- To use JSON validator library 
+- To use JSON validator library
 - Validate and process the query
 - Load the file to a single line from the beginning (now doing it in several steps)
