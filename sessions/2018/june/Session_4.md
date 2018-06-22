@@ -130,17 +130,82 @@ System.out.println("jsonData = " + new String(jsonData));
 ```
 
 ### Resources:
- - [Java control access] 
+ - [Java control access] - [Java Access Modifiers][9]
  - [StackOverflow answer][1] about control access
  - [Java packages]
+ - [Interface vs Abstract class vs Concrete class][2]
+ - [Iterfaces & Abstrac classess StackOverflow answer][6]
+ - [Difference Between Abstract Class and Interface in Java](https://beginnersbook.com/2013/05/abstract-class-vs-interface-in-java/)
+ - [Abstract Methods and Classes][3] 
+ - [Difference between `extend` and `implements`][10]
+ - [Java `static` Keyword][4]
+ - [Java `final` Keyword][5]
+ - [Computational efficiency - Big O notation][7]
+ - [Duck Typing][8]
+ - [C++ interfaces][11] 
  
 [Java control access]: https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
 [Java packages]: https://docs.oracle.com/javase/tutorial/java/package/packages.html
 [1]: https://stackoverflow.com/a/215505
+[2]: https://medium.com/heuristics/interface-vs-abstract-class-vs-concrete-class-196f20c3af9a
+[3]: https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html
+[4]: https://www.javatpoint.com/static-keyword-in-java
+[5]: https://www.javatpoint.com/final-keyword
+[6]: https://stackoverflow.com/a/1913185
+[7]: https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/
+[8]: https://es.wikipedia.org/wiki/Duck_typing
+[9]: https://beginnersbook.com/2013/05/java-access-modifiers/
+[10]: https://stackoverflow.com/a/10839155
+[11]: https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm
+[ok]: ../../../resources/icons/ok_r_black.png "Done"
 
 ### TODO
-- Review Abstract classes
-- Work more with exceptions. Make own exception
-- Review answers to these interview questions:
- 	- What is the difference between the abstract class and a interface and when you would to use them?
- 	- What is the difference between checked and uncheck exceptions?
+- ~~Review Abstract classes~~
+  ![alt text][ok]
+
+- Work more with exceptions. Make own exception.
+
+- Review answers to the following interview questions: 
+ 	
+	**What is the difference between the abstract class and a interface and when you would to use them?**
+  	
+  	[Interfaces are like a contract][6] bewteen parts: the one making the program accepts what an interface proposes but you implements as you want. Abstract classes are like setted (implemented) predefined behaviours (methods) that inherited classes adapts (if they aren't [`final`][5]) and use.
+
+  	Tecnically, fields in interfaces are automatically set to `public`, [`static`][4] and `final` and methods are always [abstract][3] (optional keyword) and set to `public`. While in [abstact classes][3] we can define `static`, `final` or `static final` fields, and can have abstract (mandatory keyword) or [concreted][2] (implemented) methods that can be defined as `public`, `protected` or `privated`.
+
+  	Other difference lies is the fact that classes can implements multiple interfaces but only can to extend one abstract or normal class. In fact is also util to mention that interfaces are implemented (because they aren't) while abstract or concrete clases are extended ([more info][10]).
+
+  	Also, one interface can only extends another interface while abstract classes can extend from other classes be abstract or concrete
+
+  	In terms of [computational efficiency][7], interfaces consumes less CPU since aren't a class but a *schema* where the inherited classes look-up for the methods and fields to implement themself. While abstract classes are real classes that can have implemented methods and their consequent computational time and load.
+
+  	However, in practical terms, it depends on the programming language. For example, in C++ [interfaces are implemented using abstract classes][11], so these terms aren't well differentiated.  Other examples of this can be read in part of a [StackOverflow answer][6] about this topic:
+
+  	> While abstract classes and interfaces are supposed to be different concepts, the implementations make that statement sometimes untrue. Sometimes, they are not even what you think they are.
+
+	>In Java, this rule is strongly enforced, while in PHP, interfaces are abstract classes with no method declared.
+
+	>In Python, abstract classes are more a programming trick you can get from the ABC module and is actually using metaclasses, and therefore classes. And interfaces are more related to [duck typing][8] in this language and it's a mix between conventions and special methods that call descriptors (the __method__ methods).
+
+	>As usual with programming, there is theory, practice, and practice in another language :-)
+  	
+	For other side, talking about when to use one or other option is addressed in the official [Java Documentation][3]:
+
+	> Consider using abstract classes if any of these statements apply to your situation:
+
+	> - You want to share code among several closely related classes.
+
+	> - You expect that classes that extend your abstract class have many common methods or fields, or require access modifiers other than public (such as protected and private).
+
+	> - You want to declare non-static or non-final fields. This enables you to define methods that can access and modify the state of the object to which they belong.
+
+	>Consider using interfaces if any of these statements apply to your situation:
+
+	> - You expect that unrelated classes would implement your interface. For example, the interfaces Comparable and Cloneable are implemented by many unrelated classes.
+
+	> - You want to specify the behavior of a particular data type, but not concerned about who implements its behavior.
+
+	> - You want to take advantage of multiple inheritance of type.
+
+
+  	**What is the difference between checked and uncheck exceptions?**
