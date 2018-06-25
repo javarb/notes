@@ -142,7 +142,12 @@ System.out.println("jsonData = " + new String(jsonData));
  - [Java `final` Keyword][5]
  - [Computational efficiency - Big O notation][7]
  - [Duck Typing][8]
+ - [Catch or Specify Requirement and The Three Kinds of Exceptions -Java Docs][12]
+ - [How to Specify and Handle Exceptions in Java][13]
+ - [Why, When and How to Implement Custom Exceptions in Java][14]
+ - [Checked vs Unchecked Exceptions in Java][15]
  - [C++ interfaces][11] 
+ 
  
 [Java control access]: https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
 [Java packages]: https://docs.oracle.com/javase/tutorial/java/package/packages.html
@@ -157,15 +162,20 @@ System.out.println("jsonData = " + new String(jsonData));
 [9]: https://beginnersbook.com/2013/05/java-access-modifiers/
 [10]: https://stackoverflow.com/a/10839155
 [11]: https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm
-[ok]: ../../../resources/icons/ok_r_black.png "Done"
+[12]: https://docs.oracle.com/javase/tutorial/essential/exceptions/catchOrDeclare.html
+[13]: https://stackify.com/specify-handle-exceptions-java/
+[14]: https://stackify.com/java-custom-exceptions/
+[15]: https://www.geeksforgeeks.org/checked-vs-unchecked-exceptions-in-java/
+[exceptions]: ../../../resources/sessions/session4/exceptions_classes.png "Exceptions Classes"
+
 
 ### TODO
-- ~~Review Abstract classes~~
-  ![alt text][ok]
+- [x] Review Abstract classes
 
-- Work more with exceptions. Make own exception.
+- [ ] Work more with exceptions. Make own exception.
 
-- Review answers to the following interview questions: 
+- [x] Review answers to the following interview questions:
+	
  	
 	**What is the difference between the abstract class and a interface and when you would to use them?**
   	
@@ -209,3 +219,22 @@ System.out.println("jsonData = " + new String(jsonData));
 
 
   	**What is the difference between checked and uncheck exceptions?**
+
+  	There is three kind of exception in Java: *Checked Exceptions*, *errors* and *runtime exceptions*.
+
+  	`Checked exeptions` are those that a well-written application should anticipate from the beggining, for example a program configured for opening a file by using file manipulation method `java.io.FileReader`, while the file could just open fine, there exists a possibility that file not exists, then this must throws the `java.io.FileNotFoundException` and that exception handling should be defined by the programmer through the Catch or Specify Requirement. Then `checked exeptions` are neccesary and verified in compilation time, in such a away the program will not compile if they not exists.
+
+  	The secound class of exception in `error` and these are conditions that cannot be predicted in order to do a Catch or Specify Requeriment beforehand. For example if a file cannot be oppened because hard disk problems or because permissions problems.
+
+  	The third class are those exceptions that are internal to the applications that usually the application cannot anticipate or recover from, they are bugs. For example, in the applicationc could to exists an logic error that pass `null` the `FileReader` object instead to pass the valid file name. So this will throw a `NullPointerException`.
+
+  	So `uncheked exceptions` cannot be cheked in compilation time. So when a program is compiled, the compiler will not indicate that is required any special handling for errors, but anyway if the program fails in some point this will throws an Exception.
+
+  	In the following image is possible see the Class structure of the error handling in Java and that all under `Throwable` is checked except for `Error` and `RuntimeException`:
+
+ 	![alt text][exceptions]
+
+ 	This is specially different in reference with C++ where all is unchecked, then it's responsability of the programmer handle this adequately.
+
+ 	See more of it [here][12], [here][13] and [here][14]
+
