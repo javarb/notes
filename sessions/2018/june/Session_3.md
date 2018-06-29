@@ -135,7 +135,10 @@ Instead of:
 - [Reading files]
 - [ArrayList]
 - [Steps for adding external jars in IntelliJ IDEA](https://stackoverflow.com/a/1051705)
-- [JSON manipulation library 'jackson'](http://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.9.5/)
+- [JSON manipulation library 'jackson'](http://repo1.maven.org/maven2/com/fasterxml/jackson/core/)
+- [JSON tutorial](https://www.journaldev.com/2324/jackson-json-java-parser-api-example-tutorial). See `Jackson JSON – Read Specific JSON Key`
+- Other JSON tutorials [here](https://www.tutorialspoint.com/jackson/jackson_objectmapper.htm) and [here](http://www.mkyong.com/java/jackson-2-convert-java-object-to-from-json/)
+- [JAVA Exceptions (spa)](https://users.dcc.uchile.cl/~lmateu/Java/Transparencias/.arch/all.htm)
 
 [Reading files]: https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/
 [ArrayList]: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
@@ -143,6 +146,6 @@ Instead of:
 ### TODO
 
 - ~~To apply all the comments and suggestions in Guthub pull's resquest before merge with Javier branch in Roger's Github~~
-- To use JSON validator library
-- Validate and process the query
-- Load the file to a single line from the beginning (now doing it in several steps)
+- ~~To use JSON validator library~~
+- Validate and process the query (having some errors)
+- ~~Load the file to a single line from the beginning (now doing it in several steps) (JSON is loading now)~~
