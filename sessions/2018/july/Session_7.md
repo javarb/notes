@@ -3,19 +3,19 @@
 ## Session 7 (17/07/2018)
 
 - Answering some of my questions about exceptions and using JSON in web development
-- Introduction to Docker usage 
+- Introduction to Docker usage
 
 ### Notes:
 
 **About Java new versions**
 
-Java code release every 6 months, but from decads it's still in version 1, that means Java 8 is in really Java 1.8. So, as Java has been with the same core version it's expected stability. 
+Java code release every 6 months, but from decads it's still in version 1, that means Java 8 is in really Java 1.8. So, as Java has been with the same major version it's expected stability.
 
-What new Java versions are bringing in general is new functionalities or characteristics to make easier to use Java for certain purposes, but is very possible that same tasks can be done in older versions using the corresponding methods or libraries. Even if there is a total new functionality, as for example *Modules*, the same functionality could be achieved using third party software. Thus, for a company that have already a well defined workflow, the new characteristics in subsequent Java versions must be important enought, since this means to adapt/rewrite code and/or work flows to the pointed Java release.
+What new Java versions are bringing in general is new functionalities or characteristics to make easier to use Java for certain purposes, but is very possible that same tasks can be done in older versions using the corresponding methods or libraries. Even if there is a total new functionality, as for example [*Streams*][9] and [*Functional Programming*][10], the same functionality could be achieved using third party software. Thus, for a company that have already a well defined workflow, the new characteristics in subsequent Java versions must be important enought, since this means to adapt/rewrite code and/or work flows to the pointed Java release.
 
 **Test with finally keyword**
 
-`Finally` block is used at the end of `try-catch` blocks and the purpose of this block is to do healthy post-operations such as close databases connections, close opened files, etc. 
+`Finally` block is used at the end of `try-catch` blocks and the purpose of this block is to do healthy post-operations such as close databases connections, close opened files, etc.
 
 In the following example, the `println` statement inside the `try` block is executed, then `finally` block and after the `return` statement inside `try` block:
 
@@ -29,15 +29,15 @@ public class Main {
     }
 
     private String finallyTests() {
-        try {            
+        try {
             System.out.println("Before return from try");
             return "Inside try";
 
         } catch (RuntimeException e) {
             return "Inside catch";
 
-        } finally {            
-            System.out.println("Inside finally");            
+        } finally {
+            System.out.println("Inside finally");
 
         }
     }
@@ -45,7 +45,7 @@ public class Main {
 }
 ```
 
-Finally block is executed just before of the return in the `try` block. Also notice this code isn't even reaching the catch block at all since a exception hasn't been triggered. So the exit of the code above is:
+`finally` block is executed just before of the return in the `try` block. Also notice this code isn't even reaching the catch block at all since a exception hasn't been triggered. So the exit of the code above is:
 
 ```
 Before return from try
@@ -64,7 +64,7 @@ public class Main {
     }
 
     private String finallyTests() {
-        try {            
+        try {
             System.out.println("Inside try");
             throw new RuntimeException();
 
@@ -72,8 +72,8 @@ public class Main {
             System.out.println("Before return in catch");
             return "Inside catch";
 
-        } finally {            
-            System.out.println("Inside finally");            
+        } finally {
+            System.out.println("Inside finally");
 
         }
 
@@ -82,7 +82,7 @@ public class Main {
 }
 ```
 
-Here, `catch` block is executed after is throwed inside the `try` block but finally block is executed before `return` from `catch` block. The exit of this code is:
+Here, `catch` block is executed after is throwed inside the `try` block but `finally` block is executed before `return` from `catch` block. The exit of this code is:
 
 ```
 Inside try
@@ -91,13 +91,13 @@ Inside finally
 We are= Inside catch
 ```
 
-By last, in the following code the execution is finished inside the `try` clause and thus finally block isn't executed:
+By last, in the following code the execution is finished inside the `try` clause and thus `finally` block isn't executed:
 
 ```java
 public class Main {
 
     public static void main(String[] args) {
-        
+
         System.out.println("We are= " + new Main().finallyTests());
 
     }
@@ -109,8 +109,8 @@ public class Main {
         } catch (RuntimeException e) {
             return "Inside catch";
 
-        } finally {            
-            System.out.println("Inside finally");           
+        } finally {
+            System.out.println("Inside finally");
 
         }
 
@@ -120,34 +120,33 @@ public class Main {
 
 }
 ```
- 
-Because the `System.exit(2)` statement the execution ends without even execute `finally` block and returning the corresponding exit message: 
+
+Because the `System.exit(2)` statement the execution ends without even execute `finally` block and returning the corresponding exit message:
 
 `Process finished with exit code 2`
 
-
-There is another way to handle closing of streams is by using the [try-with-resources Statement][8] in classes which implements the class closeable (`java.io.Closeable`). But it's prefereable to know how to deal with old code since is most common find oneself reviewing/patching old code in a real work situation than to code from scratch. So is good to know about the new characteristics but is better have very good bases over this kind of things that has been widely used.
+`finally` keyword was mainly used in Java versions prior to 7 in order to ensure all closeable resources should be adequately closed, but in later Java versions, was introduced the `java.io.Closeable` class, arising a new approach to handle the closing of streams that is called the [try-with-resources Statement][8], of course in classes which implements the class closeable (`java.io.Closeable`). Anyway, it's prefereable to know how to work and deal with old code, since in a real work situation it's most common find oneself reviewing/patching old code than generating new code. So is good to know about new characteristics but is better have very good bases over these kind of things that has been widely used in past.
 
 
 **Working with Docker**
 
 In order to work with Docker we had to face some nuances. First the service was stopped:
 
-```bash 
-          
+```bash
+
 $ sudo docker ps
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 ```
 
 The service was started using the following command:
 
-```bash 
+```bash
 $ sudo systemctl start docker
 ```
 
 But then, my user could not use docker but only using root privileges which is undesired ([see the solution here](#dockernosudo)):
 
-```bash 
+```bash
 $ docker ps
 Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.30/containers/json: dial unix /var/run/docker.sock: connect: permission denied
 
@@ -157,18 +156,18 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 In this first session we ran the `hello-world` docker image, from [Docker Hub][4]:
 
-```bash 
+```bash
 $ sudo docker run hello-world
 Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world                                                                                                                                      
-9db2ca6ccae0: Pull complete 
-Digest: sha256:4b8ff392a12ed9ea17784bd3c9a8b1fa3299cac44aca35a85c90c5e3c7afacdc                                                                                                 
-Status: Downloaded newer image for hello-world:latest                                                                                                                           
-                                                                                                                                                                                
-Hello from Docker!                                                                                                                                                              
-This message shows that your installation appears to be working correctly.                                                                                                      
-                                                                                                                                                                                
-To generate this message, Docker took the following steps:                                                                                                                      
+latest: Pulling from library/hello-world
+9db2ca6ccae0: Pull complete
+Digest: sha256:4b8ff392a12ed9ea17784bd3c9a8b1fa3299cac44aca35a85c90c5e3c7afacdc
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
  1. The Docker client contacted the Docker daemon.
  2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
     (amd64)
@@ -203,7 +202,7 @@ $ sudo docker build .
 Sending build context to Docker daemon   4.96MB
 Step 1/3 : FROM alpine:3.7
 3.7: Pulling from library/alpine
-911c6d0c7995: Pull complete 
+911c6d0c7995: Pull complete
 Digest: sha256:56e2f91ef15847a2b02a5a03cbfa483949d67a242c37e33ea178e3e7e01e0dfd
 Status: Downloaded newer image for alpine:3.7
  ---> 791c3e2ebfcb
@@ -293,7 +292,7 @@ $ sudo docker logs d932a49efe50
 ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2 "No such file or directory")
 ```
 
-```bash 
+```bash
 $ sudo docker logs d93
 ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2 "No such file or directory")
 ```
@@ -307,6 +306,8 @@ ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mys
 - [MySQL image][6]
 - [How to link to a named anchor in Multimarkdown?][7]
 - [The try-with-resources Statement][8]
+- [Java Streams][9]
+- [Functional programming in Java][9]
 
 [1]: https://www.heroku.com/
 [2]: https://labs.play-with-docker.com/
@@ -316,13 +317,15 @@ ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mys
 [6]: https://hub.docker.com/_/mysql/
 [7]: https://stackoverflow.com/a/7015050
 [8]: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+[9]: https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html
+[10]: https://hackernoon.com/finally-functional-programming-in-java-ad4d388fb92e
 
 ### TODO:
 
 - [x] Run docker without sudo
 
 <a name="dockernosudo"></a>In order to run docker without sudo
-```bash 
+```bash
 $ sudo usermod -aG docker $USER
 $ newgrp docker
 $ docker ps -a
