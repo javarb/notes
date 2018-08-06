@@ -444,8 +444,10 @@ Other significative change was that the query requirement was updated in `README
 
 ### Resources
 - [Git Checkout documentation `-m` flag][1]
-[1]: https://git-scm.com/docs/git-checkout#git-checkout---merge
+- [Git Changing history][2]
 
+[1]: https://git-scm.com/docs/git-checkout#git-checkout---merge
+[2]: https://stackoverflow.com/a/8981216
 ###TODO
 
 - [ ] Review code and change where this can be optimized, comments, logic. As good as I can
