@@ -6,23 +6,57 @@
 
 ### Notes:
 
-**TDD Introduction**
+#### TDD
 
-An example of TDD was made for some single cases:
+There exists 3 types of Test framework (terms can vary): *Unit*, *component* and *integration*.
 
-We created a class called `PracticeTest.java`
+##### Unit Tests
+Unit tests are used for only test a single class.
+
+##### Component Tests
+Component tests are very fast and are intended for multiple clases but not for I/O or databases. A common pattern of this is to test a package.
+
+##### Integration Tests
+Integration tests are used to test classes and databases. In this category we can found two tendencies:
+- System tests: A separate project test our project.
+- Acceptance tests: A guided test for manual tests, can be automated, but in general terms is slow.
+
+TDD is a discipline that we have to stick to, following these laws we will end with good code.
+
+In TDD we implement the simplest solution we can.
+
+The results using TDD shoud be more elegant and better than any clever idea (we can write our idea and after compare the results).
+
+We program in order to provoke crashes, so we can fix them before they occurs in the reality. There are 3 steps to follow:
+
+- Red
+- Green
+- Refactor
+
+##### <span style="color:red;">Red</span>
+Write as little code as posible for make a failing test. Has to be relevant to the test that we're doing. A compilation error is a valid case.
+
+##### <span style="color:green;">Green</span>
+Write as little production code as possible to make all the tests we wrote in unit to pass.
+
+##### <span style="color:blue;">Refactor</span>
+Cleaning up our code. This allows to have maintenable code (not a entangle)
+
+We want to program naturally green code all time, but we will end with better code and cleaner when we begin with <span style="color:red;">*Red*</span>, <span style="color:green;">*Green*</span>, <span style="color:blue;">*Refactor*</span>
+
+In practice each step should take 2 minutes.
+
+An example of TDD was made for some single cases. For this, we created a class called `PracticeTest.java`.
+
+There we import the `junit` `Assert` and `Test` libraries.
+
 ```java
 package co.org.osso.tdd;
-// Unit, component and integration Test framework (terms can vary)
 
 import org.junit.Assert;
 import org.junit.Test;
 
-// unit tests (test only a single class)
-// component tests (multiple clases but not io or databases, very fast) - a common patter is to test a package
-// integration tests (classes and databases)
-// System tests (a separate project test our project)
-// Acceptance tests (A guided test for manual tests, can be automated) -slow
+
 public class PracticeTest {
 
     // Convention for tests is to call this field object target in order not depend of the class name
@@ -62,39 +96,29 @@ public class PracticeTest {
 }
 ```
 
+### Resources:
 
+[Sync local branches with remote](https://stackoverflow.com/a/10313379)
 
-**TDD**
+```bash
+[jaar@port-staff notes]$ git branch -r
+  origin/HEAD -> origin/master
+  origin/master
+  origin/session-8
+  origin/session-9
 
-A discipline that we have to stick to, following these laws. So w will end with good code. 
+[jaar@port-staff notes]$ git checkout -b session-9 origin/session-9
+Rama 'session-9' configurada para hacer seguimiento a la rama remota 'session-9' de 'origin'.
+Cambiado a nueva rama 'session-9'
+```
 
-3 steps:
-- Red
-- Green
-- Refactor
+### TODO:
 
-Ah do you mean I program in order to provoke crashes so I can fix them before thy occurs in the reality
-
-Red
-Write as little code as posible for make a failing test. Has to be relevant to the test that we're doing. A compilation error is a valid case.
-
-Green
-Write as little production code as possible to make all the tests we wrote in unit to pass.
-
-Refactor
-Cleaning up our code. This allows to have maintenable code (not a entangle) 
-
-We want to program naturally green code all time, but we will end with better code and cleaner when we begin with Red, Green, Refactor
-
-In practice each step can take 2 minutes.
-
-folowing these rules try to solve this challenge
+Folowing these rules use TDD approach to solve this challenge:
 
 https://github.com/rob-lowcock/gophercon-2018
 
-finally is needed the number of houses visited 1 time
-but why up down up down are 2 houses?
 
-TDD approach to solve it 
+Use one of these use cases to build it:
 
-Use one of these cases to build using TDD https://github.com/rob-lowcock/gophercon-2018/blob/master/main_test.go
+https://github.com/rob-lowcock/gophercon-2018/blob/master/main_test.go
