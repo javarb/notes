@@ -8,11 +8,15 @@
 
 ### Notes:
 
-** Work flow for GitHub's `notes` repo pull requests **
+** Work flow for GitHub's `notes` repo Pull Requests (PR) **
 
-There was a GitHub's pull request for session 5, but as the time was passing, changes in the session 6 and 7 were added. Thus, this pull request was having each time more and more commits. This isn't a good practice since is recommended that a pull request have less than 500 changed files per solicitude. Then, is better to make a pull request for each particular session.
+There was a GitHub's PR for session 5, but as the time was passing over, changes in the session 6 and 7 were added. Thus, this PR was having each time more and more commits.
 
-In order to achieve this, a branch must be created for each particular session, after changes be pushed to that the session branch, a pull request (PR) must be generated in order to merge to master once PR be approved.
+Have a Pull Request with so many files isn't a good practice, since the reviewer will have to inspect a lot of code each time. So, its considered as a good rule of thumb that a PR have less than 500 changed files per solicitude (PR). In that way we'll be spliting our work in several pieces that are easier to review.
+
+So in ahead, a PR will be made for each particular session.
+
+In order to achieve this, a branch must be created for each particular session, after changes be pushed to that the session branch, a PR must be generated in order to merge to master once PR be approved.
 
 **Fixing our PR solicitude**
 
@@ -150,7 +154,7 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-Then, when must to add this new file that needs to be commited in the following way so Git is capable to interpretate that we only changed the name:
+Then, when must to add this new file that needs to be commited in the following way so Git is capable to interpret that we only changed the name:
 
 ```bash
 $ git add sessions/2018/july/Session6.md sessions/2018/july/Session_6.md
@@ -196,7 +200,7 @@ $ git log --oneline
 3fcea34 (HEAD) Changes in Session 5
 d4e5719 Updated requested changes PR Session 4
 
-[jaar@port-staff notes]$ git branch
+$ git branch
 * (HEAD detached at 3fcea34)
   master
   session-5-and-6
@@ -215,14 +219,14 @@ Deleted branch master (was dcbb20a).
 After it, `master` branch is created again:
 
 ```bash
-[jaar@port-staff notes]$ git checkout -b  master
+$ git checkout -b  master
 Switched to a new branch 'master'
 ```
 
 And the upstream channel is setted up (still not inmediatly):
 
 ```bash
-[jaar@port-staff notes]$ git push --set-upstream origin master
+$ git push --set-upstream origin master
 To github.com:javarb/notes.git
  ! [rejected]        master -> master (non-fast-forward)
 error: failed to push some refs to 'git@github.com:javarb/notes.git'
@@ -235,27 +239,27 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 As we can see, in the beginning there were errors because master remotely had another content, but as we know what we are doing, we force it anyway:
 
 ```bash
-[jaar@port-staff notes]$ git push --set-upstream origin master -f
+$ git push --set-upstream origin master -f
 ```
 
 Finally, we create the branch for this Session 8. **This has a problem which is explained more ahead (1)**:
 
 ```bash
-[jaar@port-staff notes]$ git checkout -b session-8
-[jaar@port-staff notes]$ git push --set-upstream origin session-8
+$ git checkout -b session-8
+$ git push --set-upstream origin session-8
 ```
 
 As at this point (commit `3fcea34 (HEAD) Changes in Session 5`) in which we based our new branch, there wasn't a *july* folder created, we've created it:
 
 ```bash
-[jaar@port-staff notes]$ mkdir sessions/2018/july
-[jaar@port-staff notes]$ touch sessions/2018/july/Session_8.md
+$ mkdir sessions/2018/july
+$ touch sessions/2018/july/Session_8.md
 
-[jaar@port-staff july]$ git log --oneline
+$ git log --oneline
 3fcea34 (HEAD -> session-8, origin/session-8, origin/master, origin/HEAD, master) Changes in Session 5
 ...
 
-[jaar@port-staff july]$ git branch
+$ git branch
   master
   session-5-and-6
   session-7
@@ -269,7 +273,7 @@ In order to fix this situation, the following steps were addressed:
 We backed up our `Session_8.md` file to a different location:
 
 ```bash
-$ cp Session_8.md ~jaar/
+$ cp Session_8.md <backup_dir_location>
 ```
 
 Changed to the branch we desire to be based on:
@@ -296,7 +300,7 @@ At this moment a particular situation arised because the use of the [`git checko
 
 ```bash
 $ ls
-Session_6.md  Session_7.md  Session_8.md
+Session_6.md  Session_7.md  Session_8.mdm
 ```
 
 Returning to the point, as I was in the `session-7` branch, I deleted the `session-8` branch in order to commit first the changes suggested by Roger in [PR #4](https://github.com/kinbiko/notes/pull/4), merge to his and mine `master` branch, and after create the `session-8` branch based on master (with session-7 merged):
@@ -341,17 +345,17 @@ $ git branch
 Next, I switch to `master` branch in order to pull the changes made merged in GitHub:
 
 ```bash
-[jaar@port-staff july]$ git checkout master
+$ git checkout master
 Switched to branch 'master'
 Your branch is up to date with 'origin/master'
 
-[jaar@port-staff notes]$ git log --oneline
+$ git log --oneline
 3fcea34 (HEAD -> master, origin/session-8, origin/master, origin/HEAD) Changes in Session 5
 ...
 
-[jaar@port-staff notes]$ git pull
+$ git pull
 
-[jaar@port-staff notes]$ git log --oneline
+$ git log --oneline
 df50e8e (HEAD -> master, origin/master, origin/HEAD) Merge pull request #3 from javarb/session-7
 e327814 (origin/session-7, session-7) Minor changes
 72d74a3 Merge pull request #2 from kinbiko/master
@@ -363,11 +367,11 @@ e80a04d (origin/session-5-and-6, session-5-and-6) Session 5 added
 5dde3c7 Merge pull request #1 from javarb/master
 3fcea34 (origin/session-8) Changes in Session 5
 
-[jaar@port-staff notes]$ git status
+$ git status
 On branch master
 Your branch is up to date with 'origin/master'.
 
-[jaar@port-staff notes]$ git branch
+$ git branch
 * master
   session-5-and-6
   session-7
@@ -376,21 +380,21 @@ Your branch is up to date with 'origin/master'.
 After it, I tried to sync the remote branches with local (in order to delete the local ones) but it din't work:
 
 ```bash
-[jaar@port-staff notes]$ git pull -p
+$ git pull -p
 From github.com:javarb/notes
  - [deleted]         (none)     -> origin/session-5-and-6
  - [deleted]         (none)     -> origin/session-7
  - [deleted]         (none)     -> origin/session-8
 Already up to date.
 
-[jaar@port-staff notes]$ git branch
+$ git branch
 * master
   session-5-and-6
   session-7
 
-[jaar@port-staff notes]$ git fetch origin --prune
+$ git fetch origin --prune
 
-[jaar@port-staff notes]$ git branch
+$ git branch
 * master
   session-5-and-6
   session-7
@@ -399,11 +403,11 @@ Already up to date.
 So finally I did it manually:
 
 ```bash
-[jaar@port-staff notes]$ git branch -d session-5-and-6 session-7
+$ git branch -d session-5-and-6 session-7
 Deleted branch session-5-and-6 (was e80a04d).
 Deleted branch session-7 (was e327814).
 
-[jaar@port-staff notes]$ git branch
+$ git branch
 * master
 ```
 
@@ -417,9 +421,9 @@ $ git push --set-upstream origin session-8
 Now that the branch was in sync with GitHub, I copied `Session_8.md` file and made the commit:
 
 ```bash
-$ cp ~jaar/Session_8.md sessions/2018/july/
+$ cp <backup_dir_location>/Session_8.md sessions/2018/july/
 
-[jaar@port-staff notes]$ git status
+$ git status
 On branch session-8
 Your branch is up to date with 'origin/session-8'.
 
@@ -429,7 +433,7 @@ Untracked files:
         sessions/2018/july/Session_8.md
 ...
 
-[jaar@port-staff notes]$ git add sessions/2018/july/Session_8.md ; git commit -m 'Added Session 8'; git push
+$ git add sessions/2018/july/Session_8.md ; git commit -m 'Added Session 8'; git push
 ```
 
 Finally, updates were placed to this file, commited and a new PR was opened in GitHub in order to merge to master once approved.
