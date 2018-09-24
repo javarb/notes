@@ -8,7 +8,7 @@
 
 #### TDD
 
-There exists 3 types of Test framework (terms can vary): *Unit*, *component* and *integration*.
+There exists 3 types of Test (terms can vary): *Unit*, *Component* and *Integration*.
 
 ##### Unit Tests
 Unit tests are used for only test a single class.
@@ -17,7 +17,7 @@ Unit tests are used for only test a single class.
 Component tests are very fast and are intended for multiple clases but not for I/O or databases. A common pattern of this is to test a package.
 
 ##### Integration Tests
-Integration tests are used to test classes and databases. In this category we can found two tendencies:
+Integration tests are used to test classes that interact with databases. In this category we can found two tendencies:
 - System tests: A separate project test our project.
 - Acceptance tests: A guided test for manual tests, can be automated, but in general terms is slow.
 
@@ -34,7 +34,7 @@ We program in order to provoke crashes, so we can fix them before they occurs in
 - Refactor
 
 ##### <span style="color:red;">Red</span>
-Write as little code as posible for make a failing test. Has to be relevant to the test that we're doing. A compilation error is a valid case.
+Write as little test code as possible for make a failing test. Has to be relevant to the test that we're doing. A compilation error is a valid case.
 
 ##### <span style="color:green;">Green</span>
 Write as little production code as possible to make all the tests we wrote in unit to pass.
@@ -44,11 +44,11 @@ Cleaning up our code. This allows to have maintenable code (not a entangle)
 
 We want to program naturally green code all time, but we will end with better code and cleaner when we begin with <span style="color:red;">*Red*</span>, <span style="color:green;">*Green*</span>, <span style="color:blue;">*Refactor*</span>
 
-In practice each step should take 2 minutes.
+In practice the time to go over these steps can vary depending on different aspects such as expertise of the developer, complexity of the solution or the amount of test data that has to be handled. However, an indicator we are doing things right should be take 2 minutes in each step.
 
 An example of TDD was made for some single cases. For this, we created a class called `PracticeTest.java`.
 
-There we import the `junit` `Assert` and `Test` libraries.
+There we import the `junit`(Java's test framework) libraries `Assert` and `Test`.
 
 ```java
 package co.org.osso.tdd;
