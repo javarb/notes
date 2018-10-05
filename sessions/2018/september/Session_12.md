@@ -1,6 +1,6 @@
 # SOFTWARE ENGINEERING IN JAVA
 
-## Session 12 and 13 (18/09/2018, 25/09/2018)
+## Session 12 (18/09/2018)
 
 - Gradle(CLI tool for building java projects)
 - Generics (e.g. List and Map, and also custom ones)
