@@ -42,7 +42,7 @@ map.put("a", 1);
 map.put("b", 2);
 map.forEach((k,v)-> System.out.println(k+v));
 ```
-Something to notice in the previous `print` statement, is that two different datatapes are combined using the `+` operator, then both values will be treated as `String` since one of them is. So a string is printed.
+Something to notice in the previous `print` statement, is that two different datatapes are mixed using the `+` operator, so since the first parameter is a `String`, both of the values will be treated as `String`, and a concatenated string is printed out.
 
 #### Generics
 
@@ -116,7 +116,7 @@ Introductory commands seen:
 
 #### Spring Initializr
 
-Spring initializr is an assintant for set up a project template that can have different Spring dependencies built-in in a downloable pakage that can be openened in any editor. Dependencies includes MVF framework, Cloud Providers integration, Database capabilities, etc.
+Spring initializr is an assintant for set up a project template that can have different Spring dependencies built-in in a downloable pakage that can be openened in any editor. Dependencies includes MVC framework, Cloud Providers integration, Database capabilities, etc.
 
 In this sense, a new API Spring project was created and uploaded to GitHub
 

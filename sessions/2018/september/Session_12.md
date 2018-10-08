@@ -57,11 +57,11 @@ dependencies {
 ```
 Then, in order to compile and run with gradle the following commans must be done
 ```bash
-[jaar@port-staff gradle-example]$ gradle build
-[jaar@port-staff gradle-example]$ gradle run
+$ gradle build
+$ gradle run
 ```
 
-There is another step that is run with [Gradle Wrapper][4] in order to run projects without need an specific Gradle version (_to review_):
+There is another step that is run with [Gradle Wrapper][4] in order to run projects without need an specific Gradle version:
 
 ``` bash
 $ gradle wrapper
