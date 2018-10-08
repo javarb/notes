@@ -35,4 +35,10 @@ Here, we're testing both set and get methods of our object because we want to co
 
 Thus, go for 100% coverage is just doing the programmer focus in the coverage more than in the code logic as such.
 
-[1]: https://github.com/rob-lowcock/gophercon-2018
+### Resources:
+
+- [Project Euler - Programming to solve mathematical problems][1]
+- [Codewars - Practice programming through solving challenges][2]
+
+[1]: https://projecteuler.net/
+[2]: https://www.codewars.com/
