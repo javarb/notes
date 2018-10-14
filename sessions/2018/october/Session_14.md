@@ -80,11 +80,11 @@ public class DemoController {
 
 Based in the provided Roger example. Make an application that handle next maps(routes):
 
-  | Map | Method | Description |
-  |-|
-  |`/api/customer` |GET| Give me all customers. Hardcoded|
-  |`/api/book`| POST | Save to an in-memory map in a service. Return a json with the ID of the newly created book.|
-  |`/api/:id` |GET| Get by ID, should return a previously posted book|
+| Map | Method | Description |
+|---|---|---|
+|`/api/customer` |GET| Give me all customers. Hardcoded|
+|`/api/book`| POST | Save to an in-memory map in a service. Return a json with the ID of the newly created book.|
+|`/api/:id` |GET| Get by ID, should return a previously posted book|
 
 Also, write Integration tests
 
