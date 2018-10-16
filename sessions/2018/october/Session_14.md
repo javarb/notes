@@ -97,6 +97,8 @@ public MyPojo getData(@PathVariable("id") String id) {
 }
 ```
 
+**NOTE:** `@PathVariable` annotation allows us to extract variables that form part of the path (URI of the HTTP request). In this way we can use those values in our code logics.
+
 ### Resources:
 - [Spring Initializr][1]
 - [Spring Web Annotations][2]
