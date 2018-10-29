@@ -46,6 +46,8 @@ When we run the application (see note below), a Tomcat server is started on port
 
 __Note__: If changes has been made, the application needs to be restarted. So it's important don't use `Ctrl+Shift+F10` (or the equivalent running by mouse click action), because this will start another Tomcat server instance. Instead of that, what we need to do is go over the bottom panel, and click over the green rerun arrow (first icon on the top of the left vertical menu), or just hit `Ctrl+5` key binding.
 
+__Note__: When we're designing [RESTful][1] interfaces, a main concept is we have to use nouns and not verbs, so `fibonacci_number` is a valid route name, while `calculate` isn't.
+
 ##### GET Maps
 
 In order to use the API we have to access GET HTTP routes trought the browser, for example going to <http://localhost:8080/api/customer> we will receive the next HTTP response:
@@ -285,3 +287,9 @@ So:
 - No, we don't need to always use `@SpringBootTest` for all Spring tests.
 
 - Yes, we can do simpler normal unit test for the classes that do the "interesting" stuff, and only use `@SpringBootTest` for the classes that need to use Spring.
+
+### Resources
+
+[Learn REST: A RESTful Tutorial][1]
+
+[1]: https://www.restapitutorial.com/
