@@ -274,6 +274,20 @@ Write an interesting API using what you’ve learned so far with Spring.
 Write a new controller (or more than one if you want), that takes some data, does something interesting with it, and makes it accessible again from the API.
 Make sure you test your classes.
 
+__Notes from the implementation:__
+- An example to send several parameters by GET request:
+`http://localhost:8080/api/arithmetic?operation=div&n1=2&n2=0`
+
+- In floating point calcules is recommended use a `delta` bigger than `0.0` because the precision of the floating point operations could vary per system. Java isn't portable in this unless we use the [`strictfp`][3] keyword, but this should limit the answer on systems with better floating point calcule capabilities.
+
+- I was using the class name `CalculatorService` but for this application that not have much sense, since this class don't handle any data model like is handle for example for users or books wich have state information such as `year`, `age` or even `author`. Mathematical operations in this example are not handling nothing of this, just returning a result. Thus, the service class was renamed from `CalculatorService` to `Calculator`.
+
+- I methods name, we must use the form getX or getY when we have a field called X or Y, else we can use actions names. For example `getOperationsResults()` must be renamed to `calculate()`
+
+- we can use underscores `_` between digits of large numbers to make it easier to read, for example: `Assert.assertEquals(3_628_800, target.getFactorial(10));`.
+-
+- Fixing factorial integer overflow (__WIP__)
+
 #### Key question:
 
 Do you need to always use `@SpringBootTest` for all your spring tests? Can you do a simpler normal unit test for the classes that do the "interesting" stuff, and only use `@SpringBootTest` for the classes that need to use Spring?
@@ -290,6 +304,16 @@ So:
 
 ### Resources
 
-[Learn REST: A RESTful Tutorial][1]
+- [Learn REST: A RESTful Tutorial][1]
+- [Java.util.Arrays.asList() Method][2]
+- [Strictfp keyword in java][3]
+- [SO: What is the complexity of summing a series of n numbers?][4]
+- [Measure performance of an Algorithm | The big O notation][5]
+- [Factorial of a large number][6]
 
 [1]: https://www.restapitutorial.com/
+[2]: https://www.tutorialspoint.com/java/util/arrays_aslist.htm
+[3]: https://www.geeksforgeeks.org/strictfp-keyword-java/
+[4]: https://stackoverflow.com/questions/9252891/big-o-what-is-the-complexity-of-summing-a-series-of-n-numbers
+[5]: http://toolsqa.com/data-structures/big-o-notation/
+[6]: https://www.geeksforgeeks.org/factorial-large-number/
