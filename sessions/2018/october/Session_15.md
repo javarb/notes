@@ -123,13 +123,13 @@ Is possible to serve Frontend Web content in Spring:
 <https://spring.io/guides/gs/serving-web-content/>
 <https://www.baeldung.com/spring-request-response-body>
 
-An example to work with HTML inside Spring is using JSP. This is very hard to work with, is very strict and not good error tracking: https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/view.html
+An example to work with HTML inside Spring is using JSP. This is very hard to work with, is very strict and not good for error tracking: https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/view.html
 
-While this is possible to serve frontend content, the aproach of separate interests must be followed, since this allow more flexibility and portability. So instead to use a full stack application in a box, we can delegate an API to do the logic tasks while we can use whatever view enging or framework or technology we want to use/access the API.
+While this is possible to serve frontend content, the aproach of separate interests must be followed, since this allow more flexibility and portability. So instead to use a full stack application in a box, we can delegate an API to do the logic tasks while we can use whatever view engine or framework we want in order to access the API.
 
-This is not the same that microservices, is just to separate the view from the API logic.
+This is not the same as microservices, is just to separate the view from the API logic.
 
-This is neither the same that Progressive Web Apps (PWA), since in these kind of applications, the content is being loaded and served from the browser self, so even without an internet connection, the application can work and serve content that has been already downloaded and sync when a connection is available. By the other side, in the API approach, a network connection is mandatory for the correct operation of the API's and its components.
+This is neither the same as Progressive Web Apps (PWA), since in these kind of applications, the content is being loaded and served from the browser self, so even without an internet connection, the application works and can serve the content has been already loaded and sync when a internet connection is available again. By the other side, in the API approach, a network connection is mandatory for the correct operation of the API and its components.
 
 In the API approach, one of the things to have present is that APIs are decoupled from the view. So we can use and switch them between different platforms. Some usual components to achieve this approach are:
 
@@ -143,7 +143,7 @@ A simplification and better practice to use dependency injection in Spring was t
 
 ##### Field injection
 
-Field injection allows to link resources, so for example in the next code snippet, a controller is asking to Spring to `@Autowire` BookService from its pool of registered services:
+Field injection allows to link resources, so for example in the next code snippet, a controller is asking to Spring to `@Autowire` the `BookService` class from its pool of registered services:
 
 ```java
 import org.springframework.beans.factory.annotation.Autowired;
@@ -163,7 +163,7 @@ __NOTE__: Field injection is the best choise for JUnit tests.
 
 ##### Constructor injection
 
-Other way to use our service into our controller is to create a constructor that receives the service and populate a local field.
+Other way to use our service into our controller is to create a constructor that receives the service and populate it into a local field.
 
 So, once we create the constructor, we can declare `BookService` field as final (by using `@Autowired` that isn't possible). And even, we don't need anymore to use `@Autowired` annotation at all as is showed following:
 
@@ -278,7 +278,7 @@ __Notes from the Homework's answer implementation:__
 - An example to send several parameters by GET request:
 `http://localhost:8080/api/arithmetic?operation=div&n1=2&n2=0`
 
-- For floating point calcules is recommended use a `delta` bigger than `0.0` because the precision of the floating point operations could vary per system. Java isn't portable in this unless we use the [`strictfp`][3] keyword, but this should limit the answer on systems with better floating point calcule capabilities.
+- For floating point calcules is recommended to use a `delta` bigger than `0.0` because the precision of the floating point operations could vary per system. Java isn't portable in this unless we use the [`strictfp`][3] keyword, but this should limit the answer on systems with better floating point calcule capabilities.
 
 - I was using the class name `CalculatorService` but for this application that not have much sense, since this class don't handle any data model like is handle for example for users or books wich have state information such as `year`, `age` or even `author`. Mathematical operations in this example are not handling nothing of this, just returning a result. Thus, the service class was renamed from `CalculatorService` to `Calculator`.
 
@@ -290,7 +290,8 @@ __Notes from the Homework's answer implementation:__
 
 #### Key question:
 
-Do you need to always use `@SpringBootTest` for all your spring tests? Can you do a simpler normal unit test for the classes that do the "interesting" stuff, and only use `@SpringBootTest` for the classes that need to use Spring?
+- Do you need to always use `@SpringBootTest` for all your spring tests?
+- Can you do a simpler normal unit test for the classes that do the "interesting" stuff, and only use `@SpringBootTest` for the classes that need to use Spring?
 
 #### Answer:
 
