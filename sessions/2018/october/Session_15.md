@@ -123,7 +123,7 @@ Is possible to serve Frontend Web content in Spring:
 <https://spring.io/guides/gs/serving-web-content/>
 <https://www.baeldung.com/spring-request-response-body>
 
-An example to worh with HTML inside Spring is using JSP. This is very hard to work with, is very strict and not good error tracking: https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/view.html
+An example to work with HTML inside Spring is using JSP. This is very hard to work with, is very strict and not good error tracking: https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/view.html
 
 While this is possible to serve frontend content, the aproach of separate interests must be followed, since this allow more flexibility and portability. So instead to use a full stack application in a box, we can delegate an API to do the logic tasks while we can use whatever view enging or framework or technology we want to use/access the API.
 
@@ -184,7 +184,7 @@ public class BookController {
 
 __NOTE__: Constructor injection is the best choice to use in main code.
 
-__NOTE__: When we declare a field as final, it cannot be modified after, thus we have quicker applications and less prone to modifications by mistake in the fields we not want. By other side, is not recommended use final keyword in classes and methods because that lead to applications that are hard to work with.
+__NOTE__: When we declare a field as final, it cannot be modified after, thus we have quicker applications and less prone to modifications by mistake in the fields we don't want. By other side, is not recommended use final keyword in classes and methods because that lead to applications that are hard to work with.
 
 #### Testing in Spring
 
@@ -258,7 +258,7 @@ __NOTE__: The IntelliJ IDEA editor was claiming the next warning `private field 
 private BookController BookControllerTarget;
 ```
 
-This happends because the free version of the software doesn't relate what is being used through Sping, while the paid version does. So in free version, in order to solve that, we have to press `Alt+Enter` and choice the `supress unsused warning if annotated by org.springframework...Autowired` option.
+This happends because the free version of the software doesn't relate what is being used through Spring, while the paid version does. So in free version, in order to solve that, we have to press `Alt+Enter` and choice the `supress unsused warning if annotated by org.springframework...Autowired` option.
 
 This also happends with:
 
@@ -274,11 +274,11 @@ Write an interesting API using what you’ve learned so far with Spring.
 Write a new controller (or more than one if you want), that takes some data, does something interesting with it, and makes it accessible again from the API.
 Make sure you test your classes.
 
-__Notes from the implementation:__
+__Notes from the Homework's answer implementation:__
 - An example to send several parameters by GET request:
 `http://localhost:8080/api/arithmetic?operation=div&n1=2&n2=0`
 
-- In floating point calcules is recommended use a `delta` bigger than `0.0` because the precision of the floating point operations could vary per system. Java isn't portable in this unless we use the [`strictfp`][3] keyword, but this should limit the answer on systems with better floating point calcule capabilities.
+- For floating point calcules is recommended use a `delta` bigger than `0.0` because the precision of the floating point operations could vary per system. Java isn't portable in this unless we use the [`strictfp`][3] keyword, but this should limit the answer on systems with better floating point calcule capabilities.
 
 - I was using the class name `CalculatorService` but for this application that not have much sense, since this class don't handle any data model like is handle for example for users or books wich have state information such as `year`, `age` or even `author`. Mathematical operations in this example are not handling nothing of this, just returning a result. Thus, the service class was renamed from `CalculatorService` to `Calculator`.
 
@@ -286,7 +286,7 @@ __Notes from the implementation:__
 
 - we can use underscores `_` between digits of large numbers to make it easier to read, for example: `Assert.assertEquals(3_628_800, target.getFactorial(10));`.
 -
-- Fixing factorial integer overflow (__WIP__)
+- Fixing factorial integer overflow by using the [BigInteger][6] Java Class. There is [another solution][8] but the choosen was easier to implement.
 
 #### Key question:
 
@@ -294,7 +294,7 @@ Do you need to always use `@SpringBootTest` for all your spring tests? Can you d
 
 #### Answer:
 
-`@SpringBootTest` annotation is only neccesary in test classes that need work with Spring components, so if we don't need work with Spring at all, we can use simple tests, instantiating target objects directly without useing injection through `@Autowired`.
+`@SpringBootTest` annotation is only neccesary in test classes that need work with Spring components, so if we don't need work with Spring at all, we can use simple tests, instantiating target objects directly without use injection through `@Autowired`.
 
 So:
 
@@ -309,11 +309,15 @@ So:
 - [Strictfp keyword in java][3]
 - [SO: What is the complexity of summing a series of n numbers?][4]
 - [Measure performance of an Algorithm | The big O notation][5]
-- [Factorial of a large number][6]
+- [Java Class BigInteger][6]
+- [Avoiding factorial overflow - Stack Overflow post][7]
+- [Factorial of a large number - Other solution][8]
 
 [1]: https://www.restapitutorial.com/
 [2]: https://www.tutorialspoint.com/java/util/arrays_aslist.htm
 [3]: https://www.geeksforgeeks.org/strictfp-keyword-java/
 [4]: https://stackoverflow.com/questions/9252891/big-o-what-is-the-complexity-of-summing-a-series-of-n-numbers
 [5]: http://toolsqa.com/data-structures/big-o-notation/
-[6]: https://www.geeksforgeeks.org/factorial-large-number/
+[6]: https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html
+[7]: https://stackoverflow.com/a/23415533
+[8]: https://www.geeksforgeeks.org/factorial-large-number/
