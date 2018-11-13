@@ -285,7 +285,7 @@ __Notes from the Homework's answer implementation:__
 - I methods name, we must use the form getX or getY when we have a field called X or Y, else we can use actions names. For example `getOperationsResults()` must be renamed to `calculate()`
 
 - we can use underscores `_` between digits of large numbers to make it easier to read, for example: `Assert.assertEquals(3_628_800, target.getFactorial(10));`.
--
+
 - Fixing factorial integer overflow by using the [BigInteger][6] Java Class. There is [another solution][8] but the choosen was easier to implement.
 
 #### Key question:
