@@ -47,6 +47,13 @@ So, at the end Java is simpler and safer to use to build stable backend applicat
 ### Homework
 Make the fronted for the Java API calculator.
 
+NOTES:
+
+CORS Filter has to be added to provide access to the JS frontend to the Java Backend, else I'll get the error:
+
+`Failed to load http://localhost:8080/api/fibonacci/2: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.`
+
+
 ### Resources
 
 - [Apache Groovy Language][11]
