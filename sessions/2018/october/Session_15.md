@@ -12,13 +12,15 @@ Roger was reviewing my homework solution and advicing me some modifications and 
 
 #### Reviewing/fixing Spring API homework
 
-In certain part of the code I needed to save and incremental `id` `int` field into the object's field that was a `String`. A way to do it should be changing the type of the object's field, but a simpler way (hack) to work around it is doing `id` increment and mapping to `String` by concatenating with `""` at the moment to set into the object's field:
+In certain part of the code I needed to save and incremental `int` field (`id`) into the object's field that was a `String`. A way to do it should be changing the type of the object's field, but a simpler way (hack) to work around it is doing `id` increment and mapping to `String` by concatenating with `""` at the moment to set into the object's field:
 
 ```java
 book.setBookID(""+id++);
 ```
 
-__Note__: In the final solution, the object field was changed from `String` to `Integer` (handle `null` values is convenient when answering to request to inexistents elements), since the previous mentioned hack was a workaround.
+__Note__: Since the previous mentioned hack was a workaround, in the final solution, the object field was changed from `String` to `Integer`, that was choosen because in difference to `ìnt`, `Ìnteger` supports `null` values for the variable, which is convenient when answering to request to inexistents elements.
+
+__Note__: Managing and deciding on ID values should be done on the backend (ideally by the database itself), and never by the client.
 
 Another optimization that was spoken was about to change this kind of return conditions when using `Map` structure:
 
@@ -54,28 +56,33 @@ In order to use the API we have to access GET HTTP routes trought the browser, f
 
 ```json
 [
-{
-name: "Test user 1",
-customerID: 1111,
-emailAddress: "test1@mail.com",
-dateOfBirth: "01-01-1901"
-},
-{
-name: "Test user 2",
-customerID: 2222,
-emailAddress: "test2@mail.com",
-dateOfBirth: "02-02-1902"
-},
-{
-name: "Test user 3",
-customerID: 3333,
-emailAddress: "test3@mail.com",
-dateOfBirth: "03-03-1903"
-}
+  {
+    "name": "Test user 1",
+    "customerID": 1111,
+    "emailAddress": "test1@mail.com",
+    "dateOfBirth": "01-01-1901"
+  },
+  {
+    "name": "Test user 2",
+    "customerID": 2222,
+    "emailAddress": "test2@mail.com",
+    "dateOfBirth": "02-02-1902"
+  },
+  {
+    "name": "Test user 3",
+    "customerID": 3333,
+    "emailAddress": "test3@mail.com",
+    "dateOfBirth": "03-03-1903"
+  }
 ]
 ```
 
 Those are the hardcoded users inside our API
+
+__Note__: JSON format need double quotes `""` around the key, i.e. left-hand side of `:`.
+
+Nevertheless, if the web browser has some complement to interpret JSON, the answer will be shown without double quotes `""` around the key.
+
 
 ##### POST Maps
 
@@ -209,7 +216,7 @@ public class ApiApplicationBookTests {
 }
 ```
 
-But if we have dependencies, for example __when testing a controller__, so we must to use `@Autowire` to link dependencies and call controller's methods directly, not by hitting the URLs of HTTP methods (GET, POST, PUT, etc.) in the controller maps. For example:
+But if we're testing a a class that have dependencies, for example a controller (with dependencies, because could be  controllers without them), so we must to use `@Autowire` to link dependencies and, in this case (see note below), call the controller methods directly, not by hitting the URLs of HTTP methods (GET, POST, PUT, etc.) in the controller maps. For example:
 
 ```java
 package co.org.osso.api;
@@ -248,10 +255,13 @@ public class ApiApplicationBookTests {
 }
 ```
 
-Something to notice in the previous example is that I had to create a new book from the test self, If I don't do so, this will return `null` even if I already have populated the in-memory array from Postman. The reason for this is that my test is running in a different memory space than the running application, just like when I'm running a Java application twice or when I when I'm using two different linux terminals. This is for temporal in-memory datasets, if I'm using a database, data will be persistent.
+__Note__: A better and more complete test would be to actually hit the HTTP endpoints themselves with JSON and retrieve the JSON back as it gives me more confidence that all is setted up correctly in regards to call controller's methods directly that's was we did for the `ApiApplicationBookTests` class in the previous exercise.
 
+__Note__: Something to notice in the previous example is that I had to create a new book from the test self, If I don't do so, this will return `null` even if I already have populated the in-memory array from Postman. The reason for this is that my test is running in a different memory space than my running application, so they are different processes, just like when I'm running a Java application twice or when I when I'm opening two different linux terminals.
 
-__NOTE__: The IntelliJ IDEA editor was claiming the next warning `private field BookControllerTarget is never assigned` in the next code line:
+This behaviour applies for temporal in-memory datasets, because if I'm using a database, the data will be persistent.
+
+__Note__: The IntelliJ IDEA editor was claiming the next warning `private field BookControllerTarget is never assigned` in the next code line:
 
 ```java
 @Autowired
@@ -282,7 +292,7 @@ __Notes from the Homework's answer implementation:__
 
 - I was using the class name `CalculatorService` but for this application that not have much sense, since this class don't handle any data model like is handle for example for users or books wich have state information such as `year`, `age` or even `author`. Mathematical operations in this example are not handling nothing of this, just returning a result. Thus, the service class was renamed from `CalculatorService` to `Calculator`.
 
-- I methods name, we must use the form getX or getY when we have a field called X or Y, else we can use actions names. For example `getOperationsResults()` must be renamed to `calculate()`
+- In method names, we usually use the form getX or getY when we have a field called X or Y, else we can use actions names. So for example, we renamed from `getOperationsResults()` to `calculate()` that describes better the action.
 
 - we can use underscores `_` between digits of large numbers to make it easier to read, for example: `Assert.assertEquals(3_628_800, target.getFactorial(10));`.
 
@@ -290,18 +300,67 @@ __Notes from the Homework's answer implementation:__
 
 #### Key question:
 
-- Do you need to always use `@SpringBootTest` for all your spring tests?
-- Can you do a simpler normal unit test for the classes that do the "interesting" stuff, and only use `@SpringBootTest` for the classes that need to use Spring?
+**Q**: Do you need to always use `@SpringBootTest` for all your spring tests?
 
-#### Answer:
+**A**: `@SpringBootTest` annotation is only neccesary in test classes that need work with Spring components, so if we don't need work with Spring at all, we can use simple tests, instantiating target objects directly without use injection through `@Autowired`.
 
-`@SpringBootTest` annotation is only neccesary in test classes that need work with Spring components, so if we don't need work with Spring at all, we can use simple tests, instantiating target objects directly without use injection through `@Autowired`.
+So, no, we don't need to always use `@SpringBootTest` for all Spring tests.
 
+**Q**: Can you do a simpler normal unit test for the classes that do the "interesting" stuff, and only use `@SpringBootTest` for the classes that need to use Spring?
+
+**A**: Yes, we can do simpler normal unit test for the classes that do the "interesting" stuff, and only use `@SpringBootTest` for the classes that need to use Spring.
+
+**Q**: What's the difference between ++id and id++?
+
+**A**:
+- `++id` is the pre increment operator that increments the variable value just in the same step.
 So:
+```java
+int number = 1;
+System.out.println("++number = " + ++number);
+```
+Will give as result  `2`
 
-- No, we don't need to always use `@SpringBootTest` for all Spring tests.
+- `id++` is the post increment operator, so this will increment variable just after the current step. Therefor:
+```java
+int number = 1;
+System.out.println("number++ = " + number++);
+```
+Will give as result  `1`. But will be `2` in the next step, so for example, the next step being:
+```java
+System.out.println("number++ = " + (number + 10));
+```
+Will print out the number `12`
 
-- Yes, we can do simpler normal unit test for the classes that do the "interesting" stuff, and only use `@SpringBootTest` for the classes that need to use Spring.
+
+**Q**: API design interview question (perhaps, slightly difficult?):
+Why is it a bad idea to return an array as the top-level element in an API?
+In other words, why is it bad that the first character of an API payload (request or response) is `[` instead of `{`?
+
+Note: It's OK in our case though - this isn't meant to be a well designed API just yet.
+
+**A**: Is dangerous because the risk of a [JSON Hijacking Attack][9], that consists in a GET requests that sends a vulnerable server JSON payload response back to attacker's computer by hijacking the user session cookies, considering that a JSON response contains possible user's sensitive information.
+
+The focal point of this vulnerability comes when the [JSON document toplevel][10] denotes an array `[` and not an object `{`, because a script that contains a JSON array is still a valid JavaScript file, so can be executed and used for the attacker purposes.
+
+For example, in the next code, a function is executed each time that an `Ìd` property [is setted][11] into any object, and then returned in a alert (could be sent in back to any location the attacker decides and use for evil purposes):
+```html
+<html>
+...
+<body>
+    <script type="text/javascript">
+        Object.prototype.__defineSetter__('Id', function(obj){alert(obj);});
+    </script>
+    <script src="http://example.com/Home/AdminBalances"></script>
+</body>
+</html>
+```
+
+Nevertheless, if the response JSON payload begin with an object character `{`, this makes it a non valid JavaScript file and this vulnerability should not work.
+
+So regardless what the JSON format could specify in terms to verify headers or the decision of browser manufactures about how to face script execution, or the choice to only allow POST request in our backend, the best and cheaper (I guess) approach to prevent any possible harm (at least in this attack), should be to use `{` as the JSON top level element in the API response.
+
+__Note__: This seems most popular [browsers already handle this vulnerabilty][13], but I think the [risk is still there][14]
 
 ### Resources
 
@@ -313,6 +372,12 @@ So:
 - [Java Class BigInteger][6]
 - [Avoiding factorial overflow - Stack Overflow post][7]
 - [Factorial of a large number - Other solution][8]
+- [JSON Hijacking Attack][9]
+- [JSON API (v1.0) Top Level][10]
+- [`Object.prototype.__defineSetter__()`][11]
+- [Can an array be top-level JSON-text? (Stack Overflow)][12]
+- [Is JSON Hijacking still an issue in modern browsers? (Stack Overflow)][13]
+- [JSON hijacking for the modern web][14]
 
 [1]: https://www.restapitutorial.com/
 [2]: https://www.tutorialspoint.com/java/util/arrays_aslist.htm
@@ -322,3 +387,9 @@ So:
 [6]: https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html
 [7]: https://stackoverflow.com/a/23415533
 [8]: https://www.geeksforgeeks.org/factorial-large-number/
+[9]: https://haacked.com/archive/2009/06/25/json-hijacking.aspx/
+[10]: https://jsonapi.org/format/#document-top-level
+[11]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineSetter__
+[12]: https://stackoverflow.com/a/3833393
+[13]: https://stackoverflow.com/a/16880162
+[14]: https://portswigger.net/blog/json-hijacking-for-the-modern-web
