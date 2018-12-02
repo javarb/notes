@@ -25,29 +25,37 @@ For that code, linear time complexity `O(n)` is used, that means that the runnin
 The code was upgrade to the following:
 
 ```java
-List<BigInteger> fibonacci = new ArrayList<>();
+@Service
+public class Calculator {
 
-public List<BigInteger> getFibonacci(Integer number) {
+    List<BigInteger> fibonacci = new ArrayList<>();
 
-    if (fibonacci.size() >= number){
-        System.out.println("CACHE number = " + number);
-        return fibonacci.subList(0,number-1);
+    public List<BigInteger> getFibonacci(Integer number) {
+
+        if (fibonacci.size() >= number){
+            return fibonacci.subList(0,number);
+
+        } else {
+            if (fibonacci.size() == 0) {
+                fibonacci.add(BigInteger.ONE);
+                fibonacci.add(BigInteger.ONE);
+
+                for (int i = 2; i < number; i++) {
+                    fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
+                }
+            }
+
+            for (int i = fibonacci.size(); i < number; i++) {
+                fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
+            }
+
+        }
+
+        return fibonacci;
+
     }
-
-    if (fibonacci.size() == 0) {
-        fibonacci.add(BigInteger.ONE);
-        fibonacci.add(BigInteger.ONE);
-    }
-
-    for (int i = 2; i < number; i++) {
-       fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
-    }
-
-    return fibonacci;
-
-}
 ```
-In order to improve the time complexity, when a number is given, we check if that number is less or equal than the size of our fibonnaci List. If so, that means we already have calculated that fibonnaci series, and we return the sublist still the that fibonnaci number in which case we will run on a constant `O(1)` time complexity.
+When the list in empty the time complexity is `O(n)`, but in order to improve the time complexity for subsequent queries, we're using a cache notion. So instead to begin to calculate from scratch the given number, we're using our previous fibonacci calculated list to speed up the answer. If the new given number is less or equal than the cached list size, we return inmediately the corresponding sublist and our time complexity becomes constant `O(1)`. By other side, if the number is major than the cached list, we calculate just the missing values, and even if the time complexity continues being `O(n)', the answer will be quicker because less steps are neccesary to do.
 
 Also, the definition of the `List` used to store fibonacci numbers was placed in a field and the datatype of it was changed to `BigInteger` in order to avoid the integer overflow problem. Also `BigInteger.ONE` method is used when is needed to fill list with number 1.
 
