@@ -27,22 +27,23 @@ Groovy is a good language to learn but is dependant on be updated with Java vers
 Other languaged based o Java are Kotlin and Scala.
 
 
-##### JavaScript vs CofeeScript
+##### JavaScript vs CoffeeScript
 
-Another example of a Programming Languaje based in another is how CofeeScript and TypeScript whic are based on javaScript ([some details here][4]). About [CofeeScript][10], a real life example was gave by Roger in how the things can complicate with CofeeScript. When CofeeScript born at the end of 2009, it was intended to be a solution to all JavaScript problems at that time, but also introduced syntax changes. With the pass of the time, JavaScript solved the problems had and improved but in a different way CofeeScript did, so this made separate paths between both of them plus all the syntax differences. Some of the arguments against CofeeScript can be found [here][5] and [here][6].
+Another example of a Programming Languaje based in another is how CoffeeScript and TypeScript which are both based on javaScript ([some details here][4]). About [CoffeeScript][10], a real life example was given by Roger in how the things can be complicate when using CoffeeScript. When CoffeeScript born at the end of 2009, it was intended to be a solution to all JavaScript problems at that time, but also introduced syntax changes. With the pass of the time, JavaScript solved its problems and improved but in a different way that CoffeeScript did, so this made separate paths between both of these languages plus all the syntax differences. Then now, its an effort migrate or translate applications between them, JavaScript goes ahead and CoffeeScript goes behind applying JavaScript improvements. Some of the arguments against CoffeeScript can be found [here][5] and [here][6].
+
+About TypeScript its unlikely will fail in the future for the same reasons that CoffeeScript did, this is because TypeScript is a superset of JavaScript (as Groovy is to Java). So we can write JavaScript into a TypeScript file and it just will work.
 
 ##### Domain Specific Language   
 
-Domain Specific Languages (DSL) are small programming languages used inside an application with the purpose to execute certain focused tasks into applications, examples of them are SQL, CSS, Regular Expressions. Gradle scripts written with Groovy are other exampke if a DLS, that means an DLS can be written in another programming language that isn't a DSL.
+Domain Specific Languages (DSL) are small programming languages used inside an application with the purpose to execute certain focused tasks into applications, examples of them are SQL, CSS, Regular Expressions. Gradle scripts written with Groovy are other example of a DLS, that means an DLS can be written in another programming language that isn't a DSL. When a DLS is built based in another language (as Groovy for example) the're called 'Internal DSL'. Conversely, when it's a language completely separated from another languages its called an 'External DSL'.
 
 ##### Java vs JavaScript comparison
 
 Was stated that Java produce much more enterprise ready applications because its multithreading support.
 
-Very good things can been achieved with JavaScript in the backend and the fronted -besides of the fact to be using the same programming language for both of them- but with JavaScript there is a need that the programmer deal beforehand with the problems can arise with a single threaded JavaScript application, such as blocking and long time of response when making operations. In general callback functions (that could leads to what is known as [callback hell][9]), [promises][7], [run-parallel][12] and [run-series][13] are used as alternatives to overcome the breaking application risks (whitout be a solution for single threading), but additional to that, we should too think in horizontal scaling and load balancing to have a enterprise grade application that behaves similarly as a backend Java application.
+Very good things can been achieved with JavaScript in the backend and the fronted -besides of the fact to be using the same programming language for both of them- but with JavaScript there is a need that the programmer deal beforehand with the problems can arise with a single threaded JavaScript application, such as blocking and long time of response when making operations. In general callback functions (that could leads to what is known as [callback hell][9]), [promises][7], [run-parallel][12] and [run-series][13] are used as alternatives to overcome the breaking application risks (without be a solution for single threading), but additional to that, we should too think in horizontal scaling and load balancing to have a enterprise grade application that behaves similarly as a backend Java application.
 
-So, at the end Java is simpler and safer to use to build stable backend applications.
-
+So, at the end still Node is simpler, Java will do it better at the long time to build stable backend applications.
 
 ### Homework
 Make the fronted for the Java API calculator.
@@ -60,8 +61,8 @@ CORS Filter has to be added to provide access to the JS frontend to the Java Bac
 - [Domain-specific language][1]
 - [Domain Specific Languages Book][2]
 - [Domain Specific Languages Video][3]
-- [JavaScript vs CofeeScript vs TypeScript][4]
-- [CofeeScript][10]
+- [JavaScript vs CoffeeScript vs TypeScript][4]
+- [CoffeeScript][10]
 - [Coffeescript vs. Javascript: Dog eat Dog][5]
 - [A Case Against Using CoffeeScript][6]
 - [Understanding promises in JavaScript][7]
