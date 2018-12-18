@@ -59,7 +59,7 @@ public class Calculator {
 
 Also, the definition of the `List` used to store fibonacci numbers was placed in a field and the datatype of it was changed to `BigInteger` in order to avoid the integer overflow problem. Also `BigInteger.ONE` method is used when is needed to fill list with number 1.
 
-Other change was to use `.add()` method in repace to the `+` operator to do the addition of numbers into the bucle.
+Other change was to use `.add()` method in replace of the `+` operator to do the addition of numbers into the bucle.
 
 Other proposed improvement in terms of space complexity is to use the same couple of variables to overrite the values each time instead to use a `List` as can be sawn in the following fragment of `Go` code:
 
