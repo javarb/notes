@@ -55,7 +55,7 @@ public class Calculator {
 
     }
 ```
-When the list in empty the time complexity is `O(n)`, but in order to improve the time complexity for subsequent queries, we're using a cache notion. So instead to begin to calculate from scratch the given number, we're using our previous fibonacci calculated list to speed up the answer. If the new given number is less or equal than the cached list size, we return inmediately the corresponding sublist and our time complexity becomes constant `O(1)`. By other side, if the number is major than the cached list, we calculate just the missing values, and even if the time complexity continues being `O(n)', the answer will be quicker because less steps are neccesary to do.
+ When the list is empty the time complexity is `O(n)`, but in order to improve the time complexity for subsequent queries, we're using a cache. Instead of beginning the calculation from scratch the each time, we're using our previous fibonacci calculated list to speed up the answer. If the new given number is less or equal than the cached list size, we return immediately the corresponding sublist and our time complexity becomes constant `O(1)`. Conversely, if the number is larger than the size of the cached list, we calculate just the missing values, and even if the time complexity continues being `O(n)', the answer will be quicker because the intermediary steps are cached.
 
 Also, the definition of the `List` used to store fibonacci numbers was placed in a field and the datatype of it was changed to `BigInteger` in order to avoid the integer overflow problem. Also `BigInteger.ONE` method is used when is needed to fill list with number 1.
 
