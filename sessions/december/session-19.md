@@ -78,10 +78,13 @@ index.html  public
 
 
 - Preguntar:
-  - Conflicto en https://github.com/javarb/api/pull/4
-  - Just the String -> POJO change we discussed last session (https://github.com/javarb/api/pull/5). Le hice merge
-    Para hacer este cambio cambio de retornar JSON lo quiero hacer sobre una rama basada en la version que tiene el bug arreglado.
+  - In https://github.com/javarb/calculator-frontend/pull/2 this has merged to delete-me-after-review branch and now is ahead than master
+    What I should to do? solved
+  - Conflict en https://github.com/javarb/api/pull/4 why?
+  - Just the String -> POJO change we discussed last session (https://github.com/javarb/api/pull/5).
+    I merged this branch `bugsnag-integration` but I added other change, so I have to make PR again? or should I revert merge and merge again?
 
+    I want to work on from the version that has the bug solved (but is in conflict) , to make improvements (return a JSON) and to add a new branch with the HTTP endpoint methods tests
 
 ### Resources:
 - [][1]
