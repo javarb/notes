@@ -12,7 +12,7 @@ https://www.atlassian.com/git/tutorials/merging-vs-rebasing
 ### Notes
 
 
-for frontend-API Roger explained to me the use od rebase and the difeference with merge, also why he used an empty branch to put an initial commit in the beggining of the history in order to after merge to compare from master towards this empty branch in order to see all the changes made and can do comments with the caveat that could make reviees because himself create that branch and PR.
+for frontend-API Roger explained to me the use od rebase and the difeference with merge, also why he used an empty branch to put an initial commit in the beggining of the history in order to after merge to compare from master towards this empty branch in order to see all the changes made and can do comments with the caveat that could make reviews because himself create that branch and PR.
 
 At the end that branch wasn't neccesary, because the changes asked in that branch PR, I applied those changes in the frontend-bs4 branch, so after all I merged this last to master (only different to the empty branch for 1 commit the merge commit). And the empty branch can be deleted (I think I did):
 
