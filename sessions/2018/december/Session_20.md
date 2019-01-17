@@ -5,16 +5,29 @@
 - resolving merge conflicts
 - reseting commit
 - rebase / merge explanation
-https://www.atlassian.com/git/tutorials/merging-vs-rebasing
 - Project creation
 - see the amount of branches and the differences between the master
 
 ### Notes
 
+Roger was explaining to me how to use `rebase` and the difeference with `merge` for the [calculator-frontend repository][2].
 
-for frontend-API Roger explained to me the use od rebase and the difeference with merge, also why he used an empty branch to put an initial commit in the beggining of the history in order to after merge to compare from master towards this empty branch in order to see all the changes made and can do comments with the caveat that could make reviews because himself create that branch and PR.
+He was also explaining to me why he used an empty branch called `Initial codebase` with an initial commit called `delete-me-after-review` as the beggining of the history. He did that in order to he could raise this [Pull Request (PR) from master agains that branch][3] and compare seeing all changes I did in master, being able to do comments, but with the caveat to couldn't make reviews because was himself who created that branch and raised the PR:
 
-At the end that branch wasn't neccesary, because the changes asked in that branch PR, I applied those changes in the frontend-bs4 branch, so after all I merged this last to master (only different to the empty branch for 1 commit the merge commit). And the empty branch can be deleted (I think I did):
+>I had to create an empty commit at the beginning of the git history in order to be able to do a complete PR against the entire codebase.
+>
+>If you're interested here's what I did to enable this:
+>
+>```
+git checkout --orphan delete-me-after-review
+git commit --allow-empty -m "Empty commit for reviewing purposes"
+git push -u origin delete-me-after-review
+git checkout master
+git rebase delete-me-after-review
+git push -f
+```
+
+At the end that branch wasn't neccesary since I applied all changes asked in that branch's PR in another branch I had created called `frontend-bs4`, so I merged that branch into master (master was only different to the empty branch for 1 commit - the merge one). And the empty branch can be deleted (I think I did):
 
 [jaar@port-staff calculator-frontend]$ git status
 On branch frontend-bs4
@@ -876,3 +889,6 @@ To github.com:javarb/api.git
 - [Apache Groovy Language][11]
 
 [1]: https://martinfowler.com/books/dsl.html
+https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+[2]: https://github.com/javarb/calculator-frontend
+[3]: https://github.com/javarb/calculator-frontend/pull/2
