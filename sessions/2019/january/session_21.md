@@ -39,11 +39,11 @@ public class Calculator {
 }
 ```
 
-If we not define our Logger implementation as `@Component`, Spring engine cannot know where that interface definition is.
+If we not define our Logger implementation as `@Component`, Spring doesn't know where the class that satisfies that interface is.
 
 A thing to highlight is the fact that we are injecting the interface but not the particular class implementation which we define as `DefaultLogger`, however, Spring choose it automatically since its the only one that exists in our project for the `Logger` interface.
 
-**Note:** In tests we have another implementation for `Logger` interface but Spring takes it as another enviroment apart so don't recognize any interface definition for our project.
+**Note:** In tests we have another implementation for `Logger` interface but as we aren't using Spring at all there, will not be conflicts with having multiple interface implementation for our project, in such a case we should to specify which implementation we are using.
 
 For more about dependency injection see [here][4]
 
