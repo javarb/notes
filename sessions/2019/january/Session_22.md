@@ -4,9 +4,10 @@
 
 - Java Memory Handling
 - Fixing Logger implmeentation
-- Spring workflow in github for estimate effort
+- Sprint workflow in GitHub project for estimate effort
 - Lint checker
 - Microservices resources
+- Git advices
 
 ### Notes
 
@@ -63,46 +64,72 @@ By other side, `threads` values cannot be cached and they need to be consulted f
 
 **NOTE:** Java application is a single process that have many threads.
 
-
 #### Spring workflow in github for estimate effort
-1 to 30 using fibonacci numbers is subjective but eventually becomes more constant because is groupal and advance accordig to the
-difficulty grade of the tasks (experts the hard things to do aren't the same that for junior programmers)
 
-Rule: Not more tahn 1 ticket in progress at the time
-the number of the added effor (each task have one) not must be less than the last one, must be more or as we are calibrating we could have been estimated our effort bad and so we reajust but in the long time this becomes some good indicator
+In order to estimate effort in a sprint (cicle of 1 week), a number between 1 and 34 must be assigned to each task using fibonacci numbers:
 
-https://slack-redir.net/link?url=https%3A%2F%2Fkanbanize.com%2Fblog%2Fwp-content%2Fuploads%2F2014%2F07%2FStandard_deviation_diagram-1024x725.png
+- 1,2,3,5,8,13,21,34
 
+Still the definition of this number is something subjective, eventually becomes constant because is groupal and advance according to the grade of difficulty of the tasks. So the idea of hardness is not the same for a work team of experts than for junior programmers, but anyway the level choosen in the team will be preserved for them and advance through the time.
 
-Example of Roger when he referenced a issue in an open source software to his team  and the reference appeared into that issue, which wasn't desired. https://github.com/satori/go.uuid/issues/66
+That said, is important to mention that the most important here is not to measure times, but to be constant, it means that if in the current week I made 13 points the most important is that I preserve my level of work in the following weeks becoming eventually better not worst.
 
-this was because he wrote the link to the issue inside his commit message. So recommendation is maybe use anoter way to write the link as look at 66 at http://url
+There is some rules:
 
-Other thing that happened to him in GH was he wrote in a issuw closing this issue and so the issue was automatically closed but was something that can be saw as rude, so is something to have present with GH.
-
+- Each task have a number of required effort
+- The assigned effort number must be written at the beggining of the task title using square brackets `[]`
+- Not more than 1 ticket in progress column at the time
+- The number of the added effort (summing up all the tasks numbers in the spring) not must be less than the last one, must be more. As we're calibrating we could have been estimated our effort bad and so we reajust but in the long time this becomes some good indicator.
 
 #### Lint checker
 
-Lint checket was introduced. An example of use can be seen at https://github.com/JStonham/budjen/pull/33/files. for JS https://eslint.org/
+Lint checker was introduced. An example of use can be seen [here][4]. It's a tool that allows to write better code by bringing up to the programmer warning messages whatever something is not being wrote according to the best programming principles and practices.
 
 #### Microservices resources
 
-https://grpc.io/ a lot to learn sync
-https://kafka.apache.org/ harder best possibilities async
-https://www.rabbitmq.com/#getstarted  easier async
+Microservices architecture rely on technologies such as [REST or RPC][7] in order to comunicate different components of an application. Some of the most widely used are the following:
+
+- [GRPC][8]. Synchronous messaging. Has a lot of things to learn.
+- [Apache kafka][9]. Asynchronous. Harder to use but best possibilities at big scale
+- [RabbitMQ][10].  Asynchronous. Easier to use, the best option to begin with.
+
+#### Advices in GitHub
+
+Roger was giving to me some examples of things that can happen in GitHub and not be what we were wanting to do. 
+
+He said me that for example once, when he was making a commit in his current company, he referenced an issue of a open source software they were using in his team. When the commit was made, the commit appeared into the open source project issue, which wasn't desired. [See here][11]. 
+
+That happened because he wrote the link to the issue inside his commit message. So the recommendation was maybe use anoter way to write the link as for example: "Look at issue number # at http://url"
+
+Other thing that happened to him in GitHub was he wrote in a commit message saying that was closing an issue, and so the issue was automatically closed, but that was not the intended because it could be saw as something a little rude.
+
+So those are things to have present with GitHub.
 
 ### Homework
 
-To do what was anotated for the spring
+Make the sprint scheduled work
 
 ### Resources
-
-tip neofech for bring the computer specifications
 
 - [Timestamp][1]
 - [Get IP info][2]
 - [Get thread ID][3]
+- [JS Lint][5]
+- [REST, RPC, and Brokered Messaging][7]
+- [GRPC][8]
+- [Apache kafka][9]
+- [RabbitMQ][10] 
+- [Neofetch - Command-line system information tool][6]
+
 
 [1]: https://www.mkyong.com/java/how-to-get-current-timestamps-in-java/
 [2]: https://crunchify.com/how-to-get-server-ip-address-and-hostname-in-java/
 [3]: https://stackoverflow.com/questions/3294293/how-to-get-thread-id-from-a-thread-pool
+[4]: https://github.com/JStonham/budjen/pull/33/files
+[5]: https://eslint.org/
+[6]: https://github.com/dylanaraps/neofetch
+[7]: https://medium.com/@natemurthy/rest-rpc-and-brokered-messaging-b775aeb0db3
+[8]: https://grpc.io/
+[9]: https://kafka.apache.org/ 
+[10]: https://www.rabbitmq.com
+[11]: https://github.com/satori/go.uuid/issues/66
