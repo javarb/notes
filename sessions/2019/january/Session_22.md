@@ -2,15 +2,11 @@
 
 ## Session 22 (15/01/2019)
 
-- Lint checker. example at https://github.com/JStonham/budjen/pull/33/files. for JS https://eslint.org/
-- Microservices
-https://grpc.io/ a lot to learn sync
-https://kafka.apache.org/ harder best possibilities async
-https://www.rabbitmq.com/#getstarted  easier async
-- Java Memory ahndling
+- Java Memory Handling
 - Fixing Logger implmeentation
 - Spring workflow in github for estimate effort
-
+- Lint checker
+- Microservices resources
 
 ### Notes
 
@@ -18,19 +14,57 @@ https://www.rabbitmq.com/#getstarted  easier async
 
 ![Java memory](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/jvm-3.jpg "Java memory")
 
-Java uses their JVM to distribute its own memory use in heap are valiables but pointers are in JVM langiage stacks
-PC registers deals with CPU instructions Native method stack is where are the methods that Java has built in
+Java uses their JVM to distribute its own memory use.
 
-Class loader is where the compiled classes are founded when the program is executed. I could to compile, and after remove the .class file and the program will not run because the code isn't where must to be but if I compli again this will not fail and the class is recreated
+In `Heap` is the zone where variables are. Pointers are in `JVM Language Stacks`.
+`PC Registers` is where CPU instructions are stored. `Native Method Stack` is where the methods that Java has built in are, and `Method Area` is self descriptive.
 
-- Fixing Logger implmeentation
+`Class Loader` is where the compiled classes are found when the program is executed. As an example of this, I could to compile a program, and after it, proceed to remove the `.class` file from the `Class Loader` corresponding folder, after that, if I try to run the program will not do it, because the code isn't where is supossed to be, but if I compile again the code, this will not fail and work since the class is recreated into the `Class Loader` zone.
 
-null inpection to avoid to be using method of null objects to avoid null pointer exception
+#### Fixing Logger implementation
 
-threads cannot be cached each request have a thread application is a single process that have many threads
+Several fixes were made to the DefaultLogger class:
+
+```java
+@Component
+public class DefaultLogger implements Logger {
+    private final String ip;
+
+    DefaultLogger () {
+        InetAddress inetAddress;
+
+        try {
+            inetAddress = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            inetAddress = null;
+        }
+
+        if (inetAddress != null){
+            ip = inetAddress.toString();
+        } else {
+            ip = "";
+        }
+    }
+
+    @Override
+    public void log(String message) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        long threadId = Thread.currentThread().getId();
+
+        message = timestamp + "  INFO [" + threadId + "] " + ip + ": " + message;
+        System.out.println(message);
+    }
+}
+```
+
+A very important point here is that the system is asking for the IP address (`InetAddress.getLocalHost()`) in the constructor, so is executed once and the value is cached and used wherever is needed and not consulted each time when the method `log()` is called. Also, `null` inspection was made when the IP address of the system running cannot be loaded for some reason, avoiding to be using methods of `null` objects and receive `Null Pointer` exceptions
+
+By other side, `threads` values cannot be cached and they need to be consulted for each `request` made (each request is a `thread`).
+
+**NOTE:** Java application is a single process that have many threads.
 
 
-- Spring workflow in github for estimate effort
+#### Spring workflow in github for estimate effort
 1 to 30 using fibonacci numbers is subjective but eventually becomes more constant because is groupal and advance accordig to the
 difficulty grade of the tasks (experts the hard things to do aren't the same that for junior programmers)
 
@@ -46,10 +80,20 @@ this was because he wrote the link to the issue inside his commit message. So re
 
 Other thing that happened to him in GH was he wrote in a issuw closing this issue and so the issue was automatically closed but was something that can be saw as rude, so is something to have present with GH.
 
+
+#### Lint checker
+
+Lint checket was introduced. An example of use can be seen at https://github.com/JStonham/budjen/pull/33/files. for JS https://eslint.org/
+
+#### Microservices resources
+
+https://grpc.io/ a lot to learn sync
+https://kafka.apache.org/ harder best possibilities async
+https://www.rabbitmq.com/#getstarted  easier async
+
 ### Homework
 
 To do what was anotated for the spring
-
 
 ### Resources
 
