@@ -14,7 +14,9 @@ https://www.rabbitmq.com/#getstarted  easier async
 
 ### Notes
 
-Java memory: graphic in slack
+#### Java memory
+
+![Java memory](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/jvm-3.jpg "Java memory")
 
 Java uses their JVM to distribute its own memory use in heap are valiables but pointers are in JVM langiage stacks
 PC registers deals with CPU instructions Native method stack is where are the methods that Java has built in
