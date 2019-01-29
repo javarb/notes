@@ -2,88 +2,111 @@
 
 ## Session 23 (22/01/2019)
 
-- 
+- Mockito testing library
+- Quality Assurance
+- Kanban feedback
 
 ### Notes
 
+#### Mockito
 
-https://site.mockito.org/
+The current landscape to testing is basically composed by TDD, Junit, mocking and integration tests. [The Mockito Library][1] was introduced as an alternate way to test our programs.
 
-Mockito should be used for test big things third party services 
-but for own projects could be the best is to use our own implementation 
-since we have all the control since Mockito is very big (still is pretty performant)
+**NOTE:** Above the previous kind of test are the Acceptance Tests or BDD, as will be showed in this notes under the section called Quality Assurance
 
-We did some changes to our Calculator test using mockito
+A general recommendation made was that since Mockito is very big (still is pretty performant), should be used for test big things third party services, but for own projects the best should be to use our own tests implementation, since we have all the control of the code.
 
-This is not neccesary the interface implementation but as we have this as a dependency in other test we cannot delete it
+So, we did some changes to our Calculator test to use Mockito:
 
-We created another branch and we can develop it maybe all in Mockito, still isn't in the kanban
+```java
+package co.org.osso.api;
 
-TDD, Junit and mocking and integration test -> Testing today
+import org.junit.Assert;
+import org.junit.Test;
+import org.mockito.Mockito;
+import java.util.ArrayList;
+import java.util.List;
 
-Is needed experience writing own code.
+public class CalculatorControllerTests {
 
-Quality assurance
+    Logger logger = Mockito.mock(Logger.class);
 
-BDD (behaviour driven development) / acceptance
-Gherkin <- language 
-Cucumber <- framework 
+    CalculatorController target = new CalculatorController(new Calculator(logger), logger);
 
-this is the behaviour expected and can be readed by non technical people:
-https://github.com/bugsnag/bugsnag-go/blob/master/features/net_http_features/appversion.feature
+    @Test
+    public void logFibonacciNumber(){
+        Mockito.doThrow(new RuntimeException()).when(logger).log("/fibonacci/10");
+        target.getFibonacci(10);
+        Mockito.verify(logger).log("/fibonacci/10");
+    }
+}
+```
 
+One thing to have present is that by using Mockito, we have not worry anymore for implement our `Logger` interface, since we are passing the class to Mockito and it knows how to operate using it. At the same time, that is the reason for which we can feel we are loosing control of things.
 
-this is the translation to technical stuff:
-https://github.com/bugsnag/bugsnag-go/blob/master/features/steps/go_steps.rb
+As was said, the interface implementation was not neccesary when we are using Mockito, but as we have this as a dependency in other tests we couldn't delete it at this time.
 
+We created another branch and we can develop maybe all tests there in Mockito, still it isn't in the kanban.
 
-As the requirements change in the time these test has to change
+#### Quality assurance
 
-Consultancy - client see the results are asked
-Make sure top level behaviour
+Was introduced the concept of [BDD - Behavior-driven development][2] also refeered as acceptance tests. These are advanced and higher level tests. In order to use these kind of approach, is needed to have experience writing own code. 
 
-Is expensive and requires big effort/time/money but get a lot in return.
+A language used for write test definitions is called [Gherkin][3] inside a framework called [Cucumber][4].
 
+The expected behaviour with these kind of tests is that them can be readed by non technical people, making sure of the top level behaviour of the application. This is specially useful when making consultancy.
 
-here is another example for java
-https://github.com/bugsnag/bugsnag-java
+Embrace this approach is expensive and requires big effort/time/money but have a very good [ROI][5] (get a lot in return).
 
+This begin with easy to read steps or test that are written usually in a folder called `features` inside the project's folder. There, some list of features can be defined as high level steps legible for non technical people. For example:
 
+```text
+Feature: Feature 1
 
-in features are the high level steps legible for non technical people
-https://github.com/bugsnag/bugsnag-java/tree/master/features
-https://github.com/bugsnag/bugsnag-java/blob/master/features/app_type.feature
+Background:
+    Given X set something
+    And X configure other thing
+    ...
 
-In steps there are the actual test implementations
-https://github.com/bugsnag/bugsnag-java/blob/master/features/steps/build_steps.rb
+Scenario: A error report contains something
+    Given X set some value
+    When X start some service
+    ...   
+```
 
+A think to notice here, is that as the requirements change in the time, the test has to change also.
 
-And in fixtures are the running applications https://github.com/bugsnag/bugsnag-java/tree/master/features/fixtures/mazerunnerplainspring/src/main/java/com.bugsnag.mazerunnerplainspring
+Following to feature definition, in `features/steps` folder are the actual test implementations. There are the translation of the features to technical terms.
 
+Finally, in `features/fixtures` folder are the running applications.
 
+#### Kanban feedback
 
-Consistent  and after high 
+We fixed the kanban to this week. Some things were talked about:
 
-consistency is more important
+- When using kanban method consistency is more important, first we achieve a consistent behaviour and after we can increase values.
 
-8 we will split 
-5 considering split
-1,2,3 is fine
+- Was introduced the cocept of retrospective, we made a feedback session to see what happened during the week and what could be improved. Also was adviced to me that not always is needed to say or answer something to all that is said, that means one could just remain silent during feedback time.
 
+- If we have big values for a task a good aproach could be to split in smaller tasks. Generally, If a task have a number of 8, we split it. If 5, we consider to split and if tasks are 1, 2 or 3, this is fine.
 
-The branch into api is for test all the endpoints.
+As this week complete stuff was 5 and a task of weight 8 was missing (because is under revision and thus not completed), I was asked to considered how much points from that 8 points were missing, knowing changes could be asked during the PR, etc. So from that weight of 8, I considered that 5 effort was missing. 
 
-We fixed the kanban to this week, we made a feedback session to see what happened what could to improve, but isn't needed to say
-something always
+Also, Roger considered that for this week the mark should be 10 and not 13. Then as I said that the past missing to review task was 5, I had still to add 5. So I added another 5 points that were all about sessions documentation, and if I finish earlier, then I could do somehting about programming.
 
-This week complete things was 5 and 8 missing because is not completed (revision) so i considered that from those
-8, 5 are missing so Roger considered that for this week the mark should be 10 and not 13 so as I had still 5, then I added another 5 in documentation, and if I finish earlier, then I could do somehting about programming.
+#### API NOTE:
 
-
+The branch that remains into API application GitHub repository is for test all the HTTP endpoints (Pending at this time).
 
 ### Resources
 
-- [][1]
+- [The Mockito Library][1]
+- [Behavior-driven development][2]
+- [Gherkin Language][3]
+- [Cucumber][4]
 
-
-[1]: https://www.mkyong.com/java/how-to-get-current-timestamps-in-java/
+[1]: https://site.mockito.org/
+[2]: https://en.wikipedia.org/wiki/Behavior-driven_development
+[3]: https://docs.cucumber.io/gherkin/
+[4]: https://cucumber.io/
+[5]: https://www.investopedia.com/terms/r/returnoninvestment.asp
