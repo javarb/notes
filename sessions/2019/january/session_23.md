@@ -50,7 +50,7 @@ We created another branch and we can develop maybe all tests there in Mockito, s
 
 #### Quality assurance
 
-Was introduced the concept of [BDD - Behavior-driven development][2] also refeered as acceptance tests. These are advanced and higher level tests. In order to use these kind of approach, is needed to have experience writing own code. 
+Was introduced the concept of [BDD - Behavior-driven development][2] also refeered as acceptance tests. These are advanced and higher level tests. In order to use these kind of approach, is needed to have experience writing own code.
 
 A language used for write test definitions is called [Gherkin][3] inside a framework called [Cucumber][4].
 
@@ -86,7 +86,7 @@ We fixed the kanban to this week. Some things were talked about:
 
 - When using kanban method consistency is more important, first we achieve a consistent behaviour and after we can increase values.
 
-- Was introduced the cocept of retrospective, we made a feedback session to see what happened during the week and what could be improved. Also was adviced to me that not always is needed to say or answer something to all that is said, that means one could just remain silent during feedback time.
+- Was introduced the concept of retrospective: A feedback time to speak about what happened during the week and what could be improved. Still this isn't required to speak during a retro, is good to do so.
 
 - If we have big values for a task a good aproach could be to split in smaller tasks. Generally, If a task have a number of 8, we split it. If 5, we consider to split and if tasks are 1, 2 or 3, this is fine.
 
