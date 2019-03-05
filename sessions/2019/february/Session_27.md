@@ -9,7 +9,6 @@
 
 ## Notes
  
-
 #### Reviewing and correction API design
 
 Several suggestion were made for the engineering design and it was finished (for the selected requirements).
