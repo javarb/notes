@@ -16,9 +16,9 @@ We created a new [project for the API application][1] in order to track the task
 
 #### Calculator Frontend
 
-Roger was explaining to me how to use `rebase` and the difeference with `merge` for the [calculator-frontend repository][2].
+Roger was explaining to me how to use `rebase` and the difference with `merge` for the [calculator-frontend repository][2].
 
-He was also explaining to me why he used an empty branch called `Initial codebase` with an initial commit called `delete-me-after-review` as the beggining of the history. He did that in order to he could raise this [Pull Request (PR) from master against that branch][3] and to compare seeing all changes I did in master, being able to do comments, but with the caveat to couldn't make reviews because was himself who created that branch and raised the PR as he states:
+He was also explaining to me why he used an initial commit called `Initial codebase` on a branch called `delete-me-after-review` as the begining of the history. He did that in order to he could raise this [Pull Request (PR) from master against that branch][3] and to compare seeing all changes I did in master, being able to do comments, but with the caveat to couldn't make reviews because was himself who created that branch and raised the PR as he states:
 
 >I had to create an empty commit at the beginning of the git history in order to be able to do a complete PR against the entire codebase.
 >
@@ -62,7 +62,7 @@ To github.com:javarb/calculator-frontend.git
 
 #### API
 
-Several operation were made in order to apply the last changes in the most secuential and ordered way into Git history
+Several operation were made in order to apply the last changes in the most sequential and ordered way into Git history
 
 First we looked in the commits history:
 
@@ -856,7 +856,7 @@ From github.com:javarb/api
   remotes/origin/master
 ```
 
-And we add the `-p` flag to sync deleting to avoid to see locally, remote branchs that doesn't existed in really remotely:
+Also we added the flag `-p` (`prune`) to the `fetch` command in order to sync deleting, and so avoid to see locally remote branches that doesn't existed remotely:
 
 ```bash
 [jaar@port-staff api]$ git fetch -p
