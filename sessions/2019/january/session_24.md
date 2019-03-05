@@ -12,7 +12,8 @@ Roger purposed to me to work in a project covering all the software workflow whi
 
 - Requirements
 - Product design (horizontal litte things)
-- Engeneering design (actual implementation)
+- Engineering design
+- Actual implementation
 
 These steps are intended be worked in repetition cycles ([sprints][2]).
 
@@ -20,7 +21,7 @@ A [repository][1] and project were created in Github selecting create automatica
 
 #### Requirements
 
-In order to complete first steps. a folder called `design` was created and inside it, a file called `requirments.md` which contains the list of all identified requirements for the project.
+In order to complete first steps. a folder called `design` was created and inside it, a file called `requirements.md` which contains the list of all identified requirements for the project.
 
 Requirements must be descriptive and concrete and not mix technical terminology, since they are intended to be read by non technical people.
 
@@ -59,7 +60,7 @@ For example, for the selected requirements:
 
 ##### Wireframes
 
-These are mockups (images) for the interfaces that will be shown for the selected requirements, satisfying the purposed scenario. This can be done with a wireframe utility such as [Balsamiq][3] which is paid or any diagraming tool such [Draw.io][4] which is free.
+These are mockups (images) for the interfaces that will be shown for the selected requirements, satisfying the proposed scenario. This can be done with a wireframe utility such as [Balsamiq][3] which is paid or any diagraming tool such [Draw.io][4] which is free.
 
 And so, for this sprint requirements, the mocks to do where:
 
