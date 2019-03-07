@@ -8,7 +8,7 @@
 - Quiz
 
 ## Notes
- 
+
 #### Reviewing and correction API design
 
 Several suggestion were made for the engineering design and it was finished (for the selected requirements).
@@ -33,7 +33,7 @@ Also, has to be considered that deal with security in Spring can be complex. One
 
 We were planing the tasks, we defined some [issues][6] in the wallet [main project][8]. A new [project was created for the first issue][7] and inside it are the tasks to do in order to complete that issue. For other issues the same will be done.
 
-Also, is important to remember that we are in the first interaction of requeriments, to this approach will be repeated for each group of requirments selected.
+Also, is important to remember that we are in the first milestone of the product and this approach will be repeated for each project we take on.
 
 ### Homework
 
