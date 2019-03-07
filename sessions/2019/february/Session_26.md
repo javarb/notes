@@ -2,7 +2,7 @@
 
 ## Session 26 (26/02/2019)
 
-- API desing generalities
+- API design generalities
 - Git - Merging lastest master changes in a branch
 
 ### Notes
@@ -13,15 +13,15 @@
 
 In the controller, declarin methods as public is a good "convention" to use becasuse they are going to be used from exterior. Even if as they're the starting point of apication they aren't to be called from anywhere.
 
-On the other hand, in a well desing application, services not need to be public since they're in the same package.
+On the other hand, in a well-designed application, services not need to be public since they're in the same package.
 
-##### Referencing Class's methods in desing
+##### Referencing Class's methods in design
 
 When we are writing definitions and want to point out a method we can write for example `Validator#validate(request)`. Here, the `#` character is showing a method inside a class. We can also write `validator.validate()` and we know that `validator` is an object.
 
 If we write `Validator.validate(request)` (using point), means that the class is static, Spring will not have an instance of it, and therefore Spring will have nothing to manage.
 
-So or `validator.validate(request)` or `Validator#validate(request)` are good ways to write methods calls when we are designing. But `Validator.validate(request)` will be undertood as an static method and unless that want to be comunicated should be avoid.
+So or `validator.validate(request)` or `Validator#validate(request)` are good ways to write methods calls when we are designing. But `Validator.validate(request)` will be understood as a static method call and unless that was the intent this way of writing, should be avoided.
 
 **Note:** What has been said depends on the fact the programmer be following good practices in naming classes and methods, this is, capitalizing first letter in class names but not first letter of method names.
 
