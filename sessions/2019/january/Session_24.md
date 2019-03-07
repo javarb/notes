@@ -1,6 +1,6 @@
 # SOFTWARE ENGINEERING IN JAVA
 
-## Session 21 (29/01/2019)
+## Session 24 (29/01/2019)
 
 - Wallet Project
 
