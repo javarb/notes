@@ -9,19 +9,76 @@
 
 #### Reviewing sprint project (issue) tasks and solving problems & feedback
 
-TODO
+Public classes goes into separate files, to separate it quickly we can copy the class code and paste into the package directory and IntellJ Idea creates a class for us)
 
-#### Reviewing main project tasks & planning next Sprint
+Always that be possible we have to make attributes `final`. This keyword, means our object, field or property is in a fixed memory position and can be seen as a constant.
 
-TODO
+There was an error when executing application: `Error: Spring Boot RestController Error: “No Converter Found for Return Value of Type”`.  Problem here were [getters and setters](https://dzone.com/articles/spring-boot-restcontroller-error-no-converter-foun)
 
 ### Homework
 
-- To do the [Setup a database and read from it][6] tasks as defined in the [project issue board][1]
+- To do the [Setup a database and read from it](https://github.com/javarb/wallet/issues/5) tasks as defined in the [project issue board](https://github.com/javarb/wallet/projects/2)
+
+####  Docker compose file that provisions a MySQL database.
+
+First we need to [install composer][1]:
+
+```bash
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+$ sudo chmod +x /usr/local/bin/docker-compose
+```
+
+**Note:** If desired to connect from host to docker host database using MySQL client, is need to [use IP address instead `localhost`][13].
+
+#### Data Definition Language (SQL file and comments).
+
+This was done following [MySQL docs][19] and samples for [table creation][2], [inserting][3] and [commenting][4] (see also notice COMMENT keyword [here][5]).
+
+Below in links section there are several resources to clarify DDL concepts and also some Stackoverflow's useful answers.
+
+#### Connect the database (locally and Travis CI) from application (Spring).
+
+MySQL access from Spring was configured by following this [tutorial][16]
 
 ### Resources
 
-- TODO
+- [Composer Installation][1]
+- [MariaDB vs MySQL][7]
+- [Docker hub MariaDB repo & compose instructions][10]
+- [Example: How to create an MySQL instance using docker compose][12]
+- [Using environment variables in docker compose][11]
+- [Use IP address when connect to docker's MySQL mapped port on localhost (Stack Overflow)][13]
+- [SQL | DDL, DML, DCL and TCL Commands][14]
+- [MySQL Data Definition Statements][19]
+- [MySQL CREATE TABLE reference][5] 
+- [MySQL CREATE TABLE DDL Examples][2]
+- [MySQL INSERT DDL Examples][3]
+- [MySQL comments][4]
+- [MySQL comments example][6]
+- [MariaDB Storage Engines][8]
+- [MySQL INT length (Stack Overflow answer)][9]
+- [Datagrip DDL code generator][15]
+- [Access MySQL database from Spring][16]
+- [Spring JPA][17]
+- [JPA][18]
 
-[1]: https://github.com/javarb/wallet/issues/5
-[2]: https://github.com/javarb/wallet/projects/2
+[1]: https://docs.docker.com/compose/install/
+[2]: http://www.mysqltutorial.org/mysql-create-table/
+[3]: http://www.mysqltutorial.org/mysql-insert-statement.aspx
+[4]: https://dev.mysql.com/doc/en/comments.html
+[5]: https://dev.mysql.com/doc/refman/8.0/en/create-table.html
+[6]: https://stackoverflow.com/a/9099699
+[7]: https://hackr.io/blog/mariadb-vs-mysql
+[8]: https://mariadb.com/kb/en/library/choosing-the-right-storage-engine/
+[9]: https://stackoverflow.com/a/27519793
+[10]:  https://hub.docker.com/_/mariadb
+[11]:  https://docs.docker.com/compose/environment-variables/
+[12]:https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee
+[13]: https://serverfault.com/a/306423
+[14]: https://www.geeksforgeeks.org/sql-ddl-dml-dcl-tcl-commands/
+[15]:https://www.jetbrains.com/datagrip/features/generation.html
+[16]:https://spring.io/guides/gs/accessing-data-mysql/
+[17]:https://spring.io/projects/spring-data-jpa
+[18]: https://wikipedia.org/wiki/Java_Persistence_API
+[19]: https://dev.mysql.com/doc/refman/8.0/en/sql-syntax-data-definition.html
