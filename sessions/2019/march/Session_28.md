@@ -33,7 +33,7 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 
 #### Data Definition Language (SQL file and comments).
 
-This was done following [MySQL docs][19] and samples for [table creation][2], [inserting][3] and [commenting][4] (see also notice COMMENT keyword [here][5]).
+This was done following [MySQL docs][19] and samples for [table creation][2], [inserting][3], [indexing][20] and [commenting][4] (see also notice COMMENT keyword [here][5]).
 
 Below in links section there are several resources to clarify DDL concepts and also some Stackoverflow's useful answers.
 
@@ -56,6 +56,7 @@ MySQL access from Spring was configured by following this [tutorial][16]
 - [MySQL INSERT DDL Examples][3]
 - [MySQL comments][4]
 - [MySQL comments example][6]
+- [MySQL CREATE INDEX Examples][20]
 - [MariaDB Storage Engines][8]
 - [MySQL INT length (Stack Overflow answer)][9]
 - [Datagrip DDL code generator][15]
@@ -82,3 +83,5 @@ MySQL access from Spring was configured by following this [tutorial][16]
 [17]:https://spring.io/projects/spring-data-jpa
 [18]: https://wikipedia.org/wiki/Java_Persistence_API
 [19]: https://dev.mysql.com/doc/refman/8.0/en/sql-syntax-data-definition.html
+[20]: http://www.mysqltutorial.org/mysql-index/mysql-create-index/
+
