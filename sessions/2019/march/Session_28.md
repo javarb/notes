@@ -57,7 +57,7 @@ MySQL access from Spring was configured by following this [tutorial][16]
 
 ### Resources
 
-- [Composer Installation][1]
+- [Docker compose Installation][1]
 - [MariaDB vs MySQL][7]
 - [Docker hub MariaDB repo & compose instructions][10]
 - [Example: How to create an MySQL instance using docker compose][12]
