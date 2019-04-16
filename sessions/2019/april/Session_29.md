@@ -1,6 +1,6 @@
 # SOFTWARE ENGINEERING IN JAVA
 
-## Session 29 (2/4/2019)
+## Session 29 (02/04/2019)
 
 - Reviewing sprint project (issue) tasks, solving problems and feedback
 - Reviewing main project tasks and planning next Sprint
