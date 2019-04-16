@@ -11,9 +11,23 @@
 
 Public classes goes into separate files, to separate it quickly we can copy the class code and paste into the package directory and IntellJ Idea creates a class for us)
 
-Always that be possible we have to make attributes `final`. This keyword, means our object, field or property is in a fixed memory position and can be seen as a constant.
-
 There was an error when executing application: `Error: Spring Boot RestController Error: “No Converter Found for Return Value of Type”`.  Problem here were [getters and setters](https://dzone.com/articles/spring-boot-restcontroller-error-no-converter-foun)
+
+#### Final keyword
+
+Always that be possible we have to make attributes `final`. This keyword, means our object, field or property will be assigned (using `=`) exactly once. Benefits are thread-safety and potentially allowing compiler optimizations.
+
+A final variable in Java cannot be reassigned:
+```java
+final int x = 1;
+x=2;
+```
+The above code will throw a compilation error.
+
+This could be seen as a constant that is in a fixed memory position like in C++, but considering the following case we find some detachment from that concept:
+
+If we have a list declared as `final List<String> strings = new ArrayList<>();` we can still add and remove elements, this is because the `List` nature self and as we are adding elements, new memory is being reserved, so memory use is not constant in this sense while the declaration of the List is final. What this means is that the `strings` List cannot be reassigned.
+
 
 ### Homework
 
