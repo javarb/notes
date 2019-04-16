@@ -15,7 +15,7 @@ There was an error when executing application: `Error: Spring Boot RestControlle
 
 #### Final keyword
 
-Always that be possible we have to make attributes `final`. This keyword, means our object, field or property will be assigned (using `=`) exactly once. Benefits are thread-safety and potentially allowing compiler optimizations.
+Whenever possible we have to make attributes `final`. This keyword, means our object, field or property will be assigned (using `=`) exactly once. Benefits are thread-safety and potentially allowing compiler optimizations.
 
 A final variable in Java cannot be reassigned:
 ```java
