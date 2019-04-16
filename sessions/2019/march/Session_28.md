@@ -35,7 +35,7 @@ If we have a list declared as `final List<String> strings = new ArrayList<>();` 
 
 ####  Docker compose file that provisions a MySQL database.
 
-First we need to [install composer][1]:
+First we need to [install docker-compose][1]:
 
 ```bash
 $ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
