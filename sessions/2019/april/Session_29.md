@@ -18,7 +18,7 @@ spring:
   jpa.hibernate.ddl-auto: none
   datasource:
     url: "jdbc:mysql://127.0.0.1:3306/wallet"
-    username: "${MYSQL_USER}"
+    username: "${MYSQL_USER:my_default_value}"
     password: "${MYSQL_PASSWD}"
 ```
 
