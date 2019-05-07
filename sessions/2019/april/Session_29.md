@@ -11,7 +11,7 @@
 
 Revision were made in order to PR (Pull Request) changes were approved.
 
-The application.properties file was renamed to application.yml in order to use that format. So database configuration was written in the YAML sintax:
+The application.properties file was renamed to application.yml in order to use that format. So database configuration was written in the YAML syntax:
 
 ```yaml
 spring:
