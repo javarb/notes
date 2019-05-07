@@ -9,7 +9,7 @@
 
 #### Reviewing sprint project (issue) tasks, solving problems and feedback
 
-Revision were made in order to MR (Merge Request) changes were approved.
+Revision were made in order to PR (Pull Request) changes were approved.
 
 The application.properties file was renamed to application.yml in order to use that format. So database configuration was written in the YAML sintax:
 
